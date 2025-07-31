@@ -1,1 +1,1 @@
-# GMTK Game Jam 2025 Submition
+# GMTK Game Jam 2025 Submission
