@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void OnMove(InputAction.CallbackContext context) {
+        if (GameManager.Instance.GameState != GameState.Playing) return;
         moveInput = context.ReadValue<Vector2>();
         moveInput = new Vector3(moveInput.x, 0, moveInput.y);
         if (moveInput.x != 0 || moveInput.y != 0) {
