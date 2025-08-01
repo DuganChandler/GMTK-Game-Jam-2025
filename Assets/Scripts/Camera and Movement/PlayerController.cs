@@ -4,9 +4,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float walkSpeed = 10f;
+    [SerializeField] private LayerMask interactableLayer;
 
     private Vector3 moveInput;
     private Rigidbody rb;
+
+    public Vector3 MoveInput => moveInput;
 
     private bool _isMoving = false;
     public bool IsMoving {
@@ -17,11 +20,25 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private bool _isInteracting= false;
+    public bool IsInteracting{
+        get {
+            return _isInteracting;
+        } private set {
+            _isInteracting= value;
+        }
+    }
+
     void Start() {
         rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate() {
+        if (IsInteracting) {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
+
         Rotate();
         Run();
     }
@@ -43,12 +60,33 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void OnMove(InputAction.CallbackContext context) {
+        if (GameManager.Instance.GameState != GameState.Playing) return;
         moveInput = context.ReadValue<Vector2>();
         moveInput = new Vector3(moveInput.x, 0, moveInput.y);
         if (moveInput.x != 0 || moveInput.y != 0) {
             IsMoving = true;
         } else {
             IsMoving = false;
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext ctx) {
+        if (ctx.started){
+            rb.linearVelocity = Vector3.zero;            
+
+            var facingDirection = transform.forward;
+            var InteractPos = transform.position + facingDirection;
+
+            var collider = Physics.OverlapSphere(InteractPos, 0.3f, interactableLayer);
+            if (collider.Length > 0) {
+                if (collider[0].TryGetComponent<IInteractable>(out var interactable)) {
+                    IsInteracting = true;
+                    StartCoroutine(interactable.Interact(transform));
+                }
+            }
+        } else if (ctx.canceled) {
+            rb.linearVelocity = Vector3.zero;            
+            IsInteracting = false;
         }
     }
 }
