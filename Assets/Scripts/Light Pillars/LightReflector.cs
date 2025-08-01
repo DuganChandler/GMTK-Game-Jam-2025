@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LightPillar : MonoBehaviour
+public class LightReflector : MonoBehaviour
 {
     [Header("Pillar Settings")]
     [SerializeField] private bool remainCastingAfterActive = false;
@@ -13,7 +13,7 @@ public class LightPillar : MonoBehaviour
     [SerializeField] private LineRenderer linePrefab;
     [SerializeField] private Transform lightSpawnPoint;
 
-    public bool Active /*{ get; private set; }*/;
+    public bool Active { get; private set; }
 
     private LineRenderer lightBeam;
     private Transform currentlyHitObject;
@@ -34,7 +34,7 @@ public class LightPillar : MonoBehaviour
     {
         Active = false;
 
-        if (currentlyHitObject != null) DeactivateCurrentlyHitBeacon();
+        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
     }
 
     private void CastLight()
@@ -56,7 +56,7 @@ public class LightPillar : MonoBehaviour
             lightBeamEndPos.x = 0;
         }
         else lightBeamEndPos = new Vector3(0, 0, lightLength);
-        
+
 
         // Set points on line
         lightBeam.positionCount = 2;
@@ -68,17 +68,17 @@ public class LightPillar : MonoBehaviour
         {
             if (currentlyHitObject == null) return;
 
-            DeactivateCurrentlyHitBeacon();
+            DeactivateCurrentlyHitReflector();
             return;
         }
 
         if (castHit.transform == currentlyHitObject) return;
 
 
-        if (currentlyHitObject != null) DeactivateCurrentlyHitBeacon();
+        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
         currentlyHitObject = castHit.transform;
-        if (!castHit.transform.TryGetComponent<LightPillar>(out LightPillar hitBeacon)) return;
-        hitBeacon.Activate();
+        if (!castHit.transform.TryGetComponent<LightReflector>(out LightReflector hitReflector)) return;
+        hitReflector.Activate();
     }
 
     private void Update()
@@ -93,9 +93,9 @@ public class LightPillar : MonoBehaviour
         if (!Active && !remainCastingAfterActive) Destroy(lightBeam);
     }
 
-    private void DeactivateCurrentlyHitBeacon()
+    private void DeactivateCurrentlyHitReflector()
     {
-        if (currentlyHitObject.transform.TryGetComponent<LightPillar>(out LightPillar currentlyHitBeacon)) currentlyHitBeacon.Deactivate();
+        if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate();
         currentlyHitObject = null;
     }
 }
