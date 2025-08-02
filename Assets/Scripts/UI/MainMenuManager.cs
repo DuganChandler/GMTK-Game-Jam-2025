@@ -13,6 +13,10 @@ public class MainMenuManager : MonoBehaviour {
         mainMenuElements.SetActive(true);
     }
 
+    void Start() {
+        SoundManager.Instance.PlayMusicNoFade("MainTheme"); 
+    }
+
     public void OnStart() {
         StartGame();
     }
