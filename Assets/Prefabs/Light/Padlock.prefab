@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a2583b0d037195540b041dd59a8c8f21, type: 2}
     - target: {fileID: 919132149155446097, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
       propertyPath: m_Name
       value: Padlock
@@ -75,6 +79,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 861513629860748254}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2575706717913449335}
   m_SourcePrefab: {fileID: 100100000, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
 --- !u!1 &5755776556737571525 stripped
 GameObject:
@@ -103,4 +110,25 @@ MonoBehaviour:
   greenMat: {fileID: 2100000, guid: 0cdedee7cc9afc641a747c30a3e148c1, type: 2}
   blueMat: {fileID: 2100000, guid: eeabb87743516ba47b6a97a6d1f0b3a4, type: 2}
   purpleMat: {fileID: 2100000, guid: fa506864b96918e4db65f6933c8dff54, type: 2}
-  whiteMat: {fileID: 0}
+  whiteMat: {fileID: 2100000, guid: a2583b0d037195540b041dd59a8c8f21, type: 2}
+--- !u!65 &-2575706717913449335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755776556737571525}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0003551471, y: 0.0005095693, z: 0.0001741073}
+  m_Center: {x: 0, y: -1.4551915e-11, z: 0}
