@@ -8,23 +8,53 @@ public class CameraManager : MonoBehaviour {
     private bool _isMoving, _isRotating, _isBusy;
     private float _xRotation, rotationDirection;
 
-    [Header("Camera Zoom")]
-    [SerializeField] private float maxOrthoSize;
-    [SerializeField] private float zoomDuration;
+    private float _moveSpeed = 10.0f;
+    public float MoveSpeed {
+        set {
+            _moveSpeed = value;
+        }
+    }
 
-    [Header("Camera Rotation")]
-    [SerializeField] private float moveSpeed = 10.0f;
-    [SerializeField] private float roationSpeed = 0.5f;
+    private float _rotationSpeed = 0.5f;
+    public float RotationSpeed {
+        set {
+            _rotationSpeed = value;
+        }
+    }
 
-    [SerializeField] private Transform center;
+    private Transform _center;
+    public Transform Center {
+        set {
+            _center = value;
+        }
+    }
 
-    public float MaxOrthoSize => maxOrthoSize;
-    public float ZoomDuration => zoomDuration;
+    private float _maxOrthoSize;
+    public float MaxOrthoSize {
+        get {
+            return _maxOrthoSize;
+        } set {
+            _maxOrthoSize = value;
+        }
+    }
+
+    private float _zoomDuration;
+    public float ZoomDuration {
+        get {
+            return _zoomDuration;
+        } set {
+            _zoomDuration = value;
+        }
+    }
 
     private void Awake() {
         _xRotation = transform.rotation.eulerAngles.x;
-        if (center) {
-            transform.position = new(center.position.x, transform.position.y, center.position.y);
+    }
+
+    private void Start() {
+        if (_center) {
+            Debug.Log(_center.position);
+            transform.position = new(_center.position.x, transform.position.y, _center.position.z);
         }
     }
 
@@ -76,13 +106,13 @@ public class CameraManager : MonoBehaviour {
 
     private void LateUpdate() {
         if (_isMoving) {
-            Vector3 pos = transform.right * (_delta.x * -moveSpeed);
-            pos += transform.up * (_delta.y * -moveSpeed);
+            Vector3 pos = transform.right * (_delta.x * -_moveSpeed);
+            pos += transform.up * (_delta.y * -_moveSpeed);
             transform.position += pos * Time.deltaTime;
         }
 
         if (_isRotating) {
-            transform.Rotate(new Vector3(_xRotation, (_delta.x + roationSpeed) * rotationDirection, 0.0f));
+            transform.Rotate(new Vector3(_xRotation, (_delta.x + _rotationSpeed) * rotationDirection, 0.0f));
             transform.rotation = Quaternion.Euler(_xRotation, transform.rotation.eulerAngles.y, 0.0f);
         }
     }
@@ -115,8 +145,8 @@ public class CameraManager : MonoBehaviour {
         Sequence seq = DOTween.Sequence();
 
         seq
-          .Append(cam.DOOrthoSize(maxOrthoSize, zoomDuration).SetEase(Ease.OutBounce))
-          .Join(cam.transform.DOMove(new Vector3(0, 0, 0), zoomDuration).SetEase(Ease.OutQuad))
+          .Append(cam.DOOrthoSize(_maxOrthoSize, _zoomDuration).SetEase(Ease.OutBounce))
+          .Join(cam.transform.DOMove(new Vector3(0, 0, 0), _zoomDuration).SetEase(Ease.OutQuad))
           .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
     }
 }

@@ -2,10 +2,10 @@ using UnityEngine;
 using DG.Tweening;
 
 public class MainMenuManager : MonoBehaviour {
-    private CameraManager cameraManager;
-
     [Header("UI Elements")] 
     [SerializeField] private GameObject mainMenuElements;
+
+    private CameraManager cameraManager;
     
     void Awake() {
         GameManager.Instance.GameState = GameState.MainMenu;
@@ -33,7 +33,5 @@ public class MainMenuManager : MonoBehaviour {
           .DOOrthoSize(cameraManager.MaxOrthoSize, cameraManager.ZoomDuration)
           .SetEase(Ease.OutBounce)
           .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
-
-
     }
 }

@@ -2,8 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelTransitioner : MonoBehaviour {
-    [SerializeField] private string sceneName;
     [SerializeField] private CircleWIpeTransition circleWIpeTransition;
+
+    private string _sceneName;
+    public string SceneName {
+        set {
+            _sceneName = value;
+        }
+    }
 
     void OnEnable() {
         CircleWIpeTransition.OnTransitionComplete += StartSceneLoad; 
@@ -21,6 +27,6 @@ public class LevelTransitioner : MonoBehaviour {
 
     void StartSceneLoad(bool closed) {
         if (!closed) return;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(_sceneName);
     }
 }

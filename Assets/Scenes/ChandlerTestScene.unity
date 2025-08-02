@@ -592,11 +592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbc99d59ca235444a952e60e104460d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOrthoSize: 10
-  zoomDuration: 1
-  moveSpeed: 10
-  roationSpeed: 0.5
-  center: {fileID: 3918296444402486086}
 --- !u!114 &852157544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,8 +665,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b3c32f663dd1943b36aef14ac4e662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWithFade: 1
+  levelNumber: 0
   circleWIpeTransition: {fileID: 924708747}
+  startWithFade: 1
+  fadeDuration: 1
+  player: {fileID: 3918296444402486086}
+  cameraManager: {fileID: 852157543}
+  maxOrthoSize: 10
+  zoomDuration: 1
+  moveSpeed: 10
+  rotationSpeed: 0.5
+  center: {fileID: 3918296444402486086}
+  levelTransitioner: {fileID: 0}
+  nextLevelName: 
 --- !u!4 &866297445
 Transform:
   m_ObjectHideFlags: 0
@@ -2086,7 +2092,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1143257471317035841, guid: 073baee6d858acd40825a876a78ab358, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1143257471317035841, guid: 073baee6d858acd40825a876a78ab358, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2094,7 +2100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1143257471317035841, guid: 073baee6d858acd40825a876a78ab358, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1143257471317035841, guid: 073baee6d858acd40825a876a78ab358, type: 3}
       propertyPath: m_LocalRotation.w

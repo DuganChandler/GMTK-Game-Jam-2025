@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CircleWIpeTransition : MonoBehaviour {
-    [SerializeField] private Transform player;
-
     private Canvas _canvas;
     private Image _blackScreen;
 
@@ -17,6 +15,20 @@ public class CircleWIpeTransition : MonoBehaviour {
 
     public static event Action<bool> OnTransitionComplete;
 
+    private float _fadeDuration;
+    public float FadeDuration {
+        set {
+            _fadeDuration = value;
+        }
+    }
+
+    private Transform _player;
+    public Transform Player {
+        set {
+            _player = value;
+        }
+    }
+
     private void Awake() {
         _canvas = GetComponent<Canvas>();
         _blackScreen = GetComponentInChildren<Image>();
@@ -24,19 +36,19 @@ public class CircleWIpeTransition : MonoBehaviour {
 
     public void OpenBlackScreen() {
         DrawBlackScreen();
-        StartCoroutine(Transition(1, 0, 1));
+        StartCoroutine(Transition(_fadeDuration, 0, 1));
     }
 
     public void CloseBlackScreen() {
         DrawBlackScreen();
-        StartCoroutine(Transition(1, 1, 0));
+        StartCoroutine(Transition(_fadeDuration, 1, 0));
     }
 
     public void DrawBlackScreen() {
 
         var screenWidth = Screen.width;
         var screenHeight = Screen.height;
-        var playerScreenPos = Camera.main.WorldToScreenPoint(player.position);
+        var playerScreenPos = Camera.main.WorldToScreenPoint(_player.position);
 
         var canvasRect = _canvas.GetComponent<RectTransform>().rect;
         var canvasWidth = canvasRect.width;
