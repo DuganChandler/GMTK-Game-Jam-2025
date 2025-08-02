@@ -67,7 +67,9 @@ public class LightReflector : MonoBehaviour
             0 => Color.white,
             1 => Color.white,
             2 => Color.yellow,
-            3 => Color.green,
+            3 => new Color(1, 0.5f, 0),
+            4 => Color.red,
+            5 => new Color(0.5f, 0, 1),
             _ => throw new System.NotImplementedException(),
         };
         lightBeam.startColor = lightBeam.endColor = lightColor;

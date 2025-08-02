@@ -237,10 +237,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   lightRadius: 0.25
-  lightLength: 15
+  lightLength: 75
   linePrefab: {fileID: 6604855539323102046, guid: 60c7bcdb40afca14495ee477efcc58e6, type: 3}
   lightSpawnPoint: {fileID: 3110197624564498476}
-  Active: 0
+  lightsGoingIntoThis: 
 --- !u!1 &8671444388479504071
 GameObject:
   m_ObjectHideFlags: 0
