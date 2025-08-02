@@ -10,20 +10,45 @@ public class LightReflector : MonoBehaviour
     [SerializeField] private float lightRadius = 0.25f;
     [SerializeField] private float lightLength = 15f;
 
-    [Header("Objects")]
+    [Header("Prefabs")]
     [SerializeField] private LineRenderer linePrefab;
+    
+    [Header("Components")]
     [SerializeField] private Transform lightSpawnPoint;
+
+    [Header("Colors")]
+    [SerializeField] private int numberOfLightUpMaterial = -1;
+    [SerializeField] private float lightGlowAmount = 4;
+    [SerializeField] private Color level1Color;
+    [SerializeField] private Color level2Color;
+    [SerializeField] private Color level3Color;
+    [SerializeField] private Color level4Color;
+    [SerializeField] private Color level5Color;
+
 
     public bool Active { get; private set; }
 
+    private Material lightUpMaterial;
     private LineRenderer lightBeam;
+    private Renderer rend;
     private Transform currentlyHitObject;
     private int lightLevel;
     private List<int> lightsGoingIntoThis;
 
+    private void Awake()
+    {
+        TryGetComponent(out rend);
+    }
+
     private void Start()
     {
         lightsGoingIntoThis = new();
+
+        if (rend != null && numberOfLightUpMaterial > -1 && numberOfLightUpMaterial < rend.materials.Length)
+        {
+            lightUpMaterial = rend.materials[numberOfLightUpMaterial];
+        }
+
         if (castOnStart) Activate(1);
     }
 
@@ -62,15 +87,18 @@ public class LightReflector : MonoBehaviour
         // Color light
         Color lightColor = lightLevel switch
         {
-            0 => Color.white,
-            1 => Color.white,
-            2 => Color.yellow,
-            3 => new Color(1, 0.5f, 0),
-            4 => Color.red,
-            5 => new Color(0.5f, 0, 1),
+            0 => Color.black,
+            1 => level1Color,
+            2 => level2Color,
+            3 => level3Color,
+            4 => level4Color,
+            5 => level5Color,
             _ => throw new System.NotImplementedException(),
         };
         lightBeam.startColor = lightBeam.endColor = lightColor;
+
+        // Color any additional materials
+        lightUpMaterial.color = lightColor * lightGlowAmount;
 
         // Find end point
         Vector3 lightBeamEndPos;
