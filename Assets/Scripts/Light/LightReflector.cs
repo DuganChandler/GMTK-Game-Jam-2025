@@ -104,7 +104,7 @@ public class LightReflector : MonoBehaviour
         lightBeam.startColor = lightBeam.endColor = GetColorForLightLevel();
 
         // Color any additional materials
-        lightUpMaterial.SetColor("_BaseColor", GetColorForLightLevel() * lightGlowAmount);
+        if (lightUpMaterial != null) lightUpMaterial.SetColor("_BaseColor", GetColorForLightLevel() * lightGlowAmount);
 
         // Find end point
         Vector3 lightBeamEndPos;
@@ -181,11 +181,12 @@ public class LightReflector : MonoBehaviour
 
     protected virtual void DeactivateCurrentlyHitReflector()
     {
-        if (currentlyHitObject != null)
+        Transform temp = currentlyHitObject;
+        currentlyHitObject = null;
+        if (temp != null)
         {
-            if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
-            else if (currentlyHitObject.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
-            currentlyHitObject = null;
+            if (temp.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
+            else if (temp.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
         }
     }
 
