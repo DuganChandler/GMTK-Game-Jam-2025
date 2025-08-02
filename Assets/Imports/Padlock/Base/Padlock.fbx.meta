@@ -3,7 +3,12 @@ guid: 6a92af584cabdc7418b1c1b71567b3da
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PadlockMat
+    second: {fileID: 2100000, guid: 91275bc6cc928ab4987ea71957681428, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
