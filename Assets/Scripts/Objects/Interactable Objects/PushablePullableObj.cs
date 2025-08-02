@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PushableObject : MonoBehaviour, IInteractable {
+public class PushableObject : MonoBehaviour, IInteractable<PlayerController> {
     [Tooltip("Units per second along the chosen axis")]
     public float pushSpeed = 3f;
 
@@ -12,8 +12,8 @@ public class PushableObject : MonoBehaviour, IInteractable {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
-    public IEnumerator Interact(Transform playerT) {
-        if (!playerT.TryGetComponent<PlayerController>(out var player)) yield break;
+    public IEnumerator Interact(Transform playerT, PlayerController playerController) {
+        if (!playerController) yield break;
 
         playerT.SetParent(transform, worldPositionStays: true);
 
@@ -27,8 +27,8 @@ public class PushableObject : MonoBehaviour, IInteractable {
 
         float sideSign = (Mathf.Abs(dotR) > Mathf.Abs(dotF) ? dotR : dotF) >= 0 ? 1f : -1f;
 
-        while (player.IsInteracting) {
-            float f = player.MoveInput.z;
+        while (playerController.IsInteracting) {
+            float f = playerController.MoveInput.z;
             if (Mathf.Abs(f) > 0.1f) {
                 Vector3 dir = -sideSign * f * slideAxis;
                 transform.position += pushSpeed * Time.fixedDeltaTime * dir;

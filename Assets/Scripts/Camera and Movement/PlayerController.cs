@@ -1,11 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour {
-    [SerializeField] private float walkSpeed = 10f;
+    [SerializeField] private float walkSpeed = 8f;
     [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private float accelerationTime = 0.1f;
 
+    private Vector3 velocity = Vector3.zero;
     private Vector3 moveInput;
     private Rigidbody rb;
 
@@ -46,8 +49,9 @@ public class PlayerController : MonoBehaviour {
     void Run() {
         Quaternion rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
         Vector3 rotatedMoveInput = rotation * moveInput;
-        Vector3 velocity = new Vector3(rotatedMoveInput.x * walkSpeed, rb.linearVelocity.y, rotatedMoveInput.z * walkSpeed);
-        rb.linearVelocity = velocity;
+        Vector3 targetVelocity = new(rotatedMoveInput.x * walkSpeed, rb.linearVelocity.y, rotatedMoveInput.z * walkSpeed);
+        Vector3 linearVelocity = Vector3.SmoothDamp(rb.linearVelocity, targetVelocity, ref velocity, accelerationTime);
+        rb.linearVelocity = linearVelocity;
     }
 
     void Rotate() {
@@ -70,6 +74,36 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void OnInteractRotateRight(InputAction.CallbackContext ctx) {
+        if (ctx.started) {
+            var facingDirection = transform.forward;
+            var InteractPos = transform.position + facingDirection;
+
+            var collider = Physics.OverlapSphere(InteractPos, 0.3f, interactableLayer);
+            if (collider.Length > 0) {
+                if (collider[0].TryGetComponent<IInteractable<float>>(out var interactable)) {
+                    StartCoroutine(interactable.Interact(transform, 1.0f));
+                }
+            }
+
+        }
+    }
+
+    public void OnInteractRotateLeft(InputAction.CallbackContext ctx) {
+        if (ctx.started) {
+            var facingDirection = transform.forward;
+            var InteractPos = transform.position + facingDirection;
+
+            var collider = Physics.OverlapSphere(InteractPos, 0.3f, interactableLayer);
+            if (collider.Length > 0) {
+                if (collider[0].TryGetComponent<IInteractable<float>>(out var interactable)) {
+                    StartCoroutine(interactable.Interact(transform, -1.0f));
+                }
+            }
+
+        }
+    }
+
     public void OnInteract(InputAction.CallbackContext ctx) {
         if (ctx.started){
             rb.linearVelocity = Vector3.zero;            
@@ -79,9 +113,9 @@ public class PlayerController : MonoBehaviour {
 
             var collider = Physics.OverlapSphere(InteractPos, 0.3f, interactableLayer);
             if (collider.Length > 0) {
-                if (collider[0].TryGetComponent<IInteractable>(out var interactable)) {
+                if (collider[0].TryGetComponent<IInteractable<PlayerController>>(out var interactable)) {
                     IsInteracting = true;
-                    StartCoroutine(interactable.Interact(transform));
+                    StartCoroutine(interactable.Interact(transform, this));
                 }
             }
         } else if (ctx.canceled) {
