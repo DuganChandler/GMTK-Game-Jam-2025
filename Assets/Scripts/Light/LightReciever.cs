@@ -8,10 +8,12 @@ public class LightReciever : MonoBehaviour
 
     [SerializeField] private UnityEvent onActivation;
 
-    public void Activate(int lightLevel)
+    public bool Activate(int lightLevel)
     {
-        if (lightLevel < lightLevelRequiredToActivate) return;
+        if (lightLevel < lightLevelRequiredToActivate) return false;
 
         onActivation?.Invoke();
+
+        return true;
     }
 }

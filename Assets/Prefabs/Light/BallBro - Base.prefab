@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 10fa5928f980eda4680f7bf4de534aaa, type: 3}
       propertyPath: m_Name
-      value: BallBro
+      value: BallBro - Base
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -125,16 +125,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   lightRadius: 0.25
-  lightLength: 15
+  lightLength: 50
   linePrefab: {fileID: 6604855539323102046, guid: 60c7bcdb40afca14495ee477efcc58e6, type: 3}
-  lightSpawnPoint: {fileID: 4429038311712368757}
   numberOfLightUpMaterial: 0
-  lightGlowAmount: 7
+  lightGlowAmount: 2
+  normalColor: {r: 0.77254903, g: 0.92941177, b: 1, a: 1}
   level1Color: {r: 1, g: 1, b: 1, a: 1}
   level2Color: {r: 1, g: 1, b: 0, a: 1}
   level3Color: {r: 1, g: 0.5, b: 0, a: 1}
   level4Color: {r: 1, g: 0, b: 0, a: 1}
   level5Color: {r: 0.5, g: 0, b: 1, a: 1}
+  lightSpawnPoint: {fileID: 4429038311712368757}
 --- !u!135 &6152510531557854763
 SphereCollider:
   m_ObjectHideFlags: 0

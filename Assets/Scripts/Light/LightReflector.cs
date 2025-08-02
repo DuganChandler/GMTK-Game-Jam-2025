@@ -4,36 +4,36 @@ using UnityEngine;
 public class LightReflector : MonoBehaviour
 {
     [Header("Pillar Settings")]
-    [SerializeField] private bool remainCastingAfterActive = false;
+    [SerializeField] protected bool remainCastingAfterActive = false;
     [SerializeField] private bool castOnStart = false;
-    [SerializeField] private LayerMask lightLayer;
-    [SerializeField] private float lightRadius = 0.25f;
-    [SerializeField] private float lightLength = 15f;
+    [SerializeField] protected LayerMask lightLayer;
+    [SerializeField] protected float lightRadius = 0.25f;
+    [SerializeField] protected float lightLength = 15f;
 
     [Header("Prefabs")]
-    [SerializeField] private LineRenderer linePrefab;
-    
-    [Header("Components")]
-    [SerializeField] private Transform lightSpawnPoint;
+    [SerializeField] protected LineRenderer linePrefab;
 
     [Header("Colors")]
     [SerializeField] private int numberOfLightUpMaterial = -1;
-    [SerializeField] private float lightGlowAmount = 4;
-    [SerializeField] private Color level1Color;
-    [SerializeField] private Color level2Color;
-    [SerializeField] private Color level3Color;
-    [SerializeField] private Color level4Color;
-    [SerializeField] private Color level5Color;
+    [SerializeField] protected float lightGlowAmount = 4;
+    [SerializeField] protected Color normalColor;
+    [SerializeField] protected Color level1Color;
+    [SerializeField] protected Color level2Color;
+    [SerializeField] protected Color level3Color;
+    [SerializeField] protected Color level4Color;
+    [SerializeField] protected Color level5Color;
 
+    [Header("Components")]
+    [SerializeField] protected Transform lightSpawnPoint;
 
-    public bool Active { get; private set; }
+    public bool Active { get; protected set; }
 
-    private Material lightUpMaterial;
-    private LineRenderer lightBeam;
+    protected Material lightUpMaterial;
+    protected LineRenderer lightBeam;
     private Renderer rend;
-    private Transform currentlyHitObject;
-    private int lightLevel;
-    private List<int> lightsGoingIntoThis;
+    protected Transform currentlyHitObject;
+    protected int lightLevel;
+    protected List<int> lightsGoingIntoThis;
 
     private void Awake()
     {
@@ -49,10 +49,10 @@ public class LightReflector : MonoBehaviour
             lightUpMaterial = rend.materials[numberOfLightUpMaterial];
         }
 
-        if (castOnStart) Activate(1);
+        if (castOnStart) ActivateStart(1);
     }
 
-    public void Activate(int levelGoingIn)
+    public virtual void ActivateStart(int levelGoingIn)
     {
         if (lightBeam != null) Destroy(lightBeam.gameObject);
         if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
@@ -63,7 +63,22 @@ public class LightReflector : MonoBehaviour
         lightLevel = CalculateLightLevel();
     }
 
-    public void Deactivate(int levelGoingOut)
+    public bool Activate(int levelGoingIn)
+    {
+        if (castOnStart || remainCastingAfterActive) return false;
+
+        if (lightBeam != null) Destroy(lightBeam.gameObject);
+        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
+
+        Active = true;
+
+        lightsGoingIntoThis.Add(levelGoingIn);
+        lightLevel = CalculateLightLevel();
+
+        return true;
+    }
+
+    public virtual void Deactivate(int levelGoingOut)
     {
         if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
 
@@ -73,7 +88,7 @@ public class LightReflector : MonoBehaviour
         if (lightLevel <= 0) Active = false;
     }
 
-    private void CastLight()
+    protected virtual void CastLight()
     {
         bool hitSomething = Physics.SphereCast(lightSpawnPoint.position, lightRadius, lightSpawnPoint.forward, out RaycastHit castHit, lightLength, lightLayer);
 
@@ -85,20 +100,10 @@ public class LightReflector : MonoBehaviour
         }
 
         // Color light
-        Color lightColor = lightLevel switch
-        {
-            0 => Color.black,
-            1 => level1Color,
-            2 => level2Color,
-            3 => level3Color,
-            4 => level4Color,
-            5 => level5Color,
-            _ => throw new System.NotImplementedException(),
-        };
-        lightBeam.startColor = lightBeam.endColor = lightColor;
+        lightBeam.startColor = lightBeam.endColor = GetColorForLightLevel();
 
         // Color any additional materials
-        lightUpMaterial.color = lightColor * lightGlowAmount;
+        lightUpMaterial.SetColor("_BaseColor", GetColorForLightLevel() * lightGlowAmount);
 
         // Find end point
         Vector3 lightBeamEndPos;
@@ -134,16 +139,15 @@ public class LightReflector : MonoBehaviour
 
         if (currentlyHitObject.TryGetComponent<LightReflector>(out LightReflector hitReflector))
         {
-            hitReflector.Activate(lightLevel);
-            return;
+            if (!hitReflector.Activate(lightLevel)) currentlyHitObject = null;
         }
         else if (currentlyHitObject.TryGetComponent<LightAmplifier>(out LightAmplifier amplifier))
         {
-            amplifier.Activate(lightLevel, lightSpawnPoint.forward);
+            if (!amplifier.Activate(lightLevel, lightSpawnPoint.forward)) currentlyHitObject = null;
         }
         else if (currentlyHitObject.TryGetComponent<LightReciever>(out LightReciever reciever))
         {
-            reciever.Activate(lightLevel);
+            if (!reciever.Activate(lightLevel)) currentlyHitObject = null;
         }
     }
 
@@ -154,19 +158,36 @@ public class LightReflector : MonoBehaviour
         CastLight();
     }
 
-    private void LateUpdate()
+    protected virtual void LateUpdate()
     {
-        if (!Active && !remainCastingAfterActive) if (lightBeam != null) Destroy(lightBeam.gameObject);
+        if (!Active && !remainCastingAfterActive) 
+            if (lightBeam != null)
+            {
+                Destroy(lightBeam.gameObject);
+                lightUpMaterial.SetColor("_BaseColor", GetColorForLightLevel());
+            }
     }
 
-    private void DeactivateCurrentlyHitReflector()
+    protected virtual Color GetColorForLightLevel() =>
+        lightLevel switch
+        {
+            0 => normalColor,
+            1 => level1Color,
+            2 => level2Color,
+            3 => level3Color,
+            4 => level4Color,
+            5 => level5Color,
+            _ => throw new System.NotImplementedException(),
+        };
+
+    protected virtual void DeactivateCurrentlyHitReflector()
     {
         if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
         else if (currentlyHitObject.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
         currentlyHitObject = null;
     }
 
-    private int CalculateLightLevel()
+    protected int CalculateLightLevel()
     {
         lightsGoingIntoThis.Sort((x, y) => y.CompareTo(x));
 

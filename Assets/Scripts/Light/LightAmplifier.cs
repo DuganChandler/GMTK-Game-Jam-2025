@@ -18,6 +18,7 @@ public class LightAmplifier : MonoBehaviour
     [Header("Colors")]
     [SerializeField] private int numberOfLightUpMaterial = -1;
     [SerializeField] private float lightGlowAmount = 4;
+    [SerializeField] private Color normalColor;
     [SerializeField] private Color level1Color;
     [SerializeField] private Color level2Color;
     [SerializeField] private Color level3Color;
@@ -52,7 +53,7 @@ public class LightAmplifier : MonoBehaviour
         if (castOnStart) Activate(1, transform.forward);
     }
 
-    public void Activate(int levelGoingIn, Vector3 direction)
+    public void ActivateStart(int levelGoingIn, Vector3 direction)
     {
         if (lightBeam != null) Destroy(lightBeam.gameObject);
         if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
@@ -63,6 +64,23 @@ public class LightAmplifier : MonoBehaviour
 
         lightsGoingIntoThis.Add(levelGoingIn);
         lightLevel = CalculateLightLevel();
+    }
+
+    public virtual bool Activate(int levelGoingIn, Vector3 direction)
+    {
+        if (castOnStart || remainCastingAfterActive) return false;
+
+        if (lightBeam != null) Destroy(lightBeam.gameObject);
+        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
+
+        Active = true;
+
+        directionOfSourceLight = direction;
+
+        lightsGoingIntoThis.Add(levelGoingIn);
+        lightLevel = CalculateLightLevel();
+
+        return true;
     }
 
     public void Deactivate(int levelGoingOut)
@@ -93,20 +111,10 @@ public class LightAmplifier : MonoBehaviour
         }
 
         // Color light
-        Color lightColor = lightLevel switch
-        {
-            0 => Color.black,
-            1 => level1Color,
-            2 => level2Color,
-            3 => level3Color,
-            4 => level4Color,
-            5 => level5Color,
-            _ => throw new System.NotImplementedException(),
-        };
-        lightBeam.startColor = lightBeam.endColor = lightColor;
+        lightBeam.startColor = lightBeam.endColor = GetColorForLightLevel();
 
         // Color any additional materials
-        lightUpMaterial.color = lightColor * lightGlowAmount;
+        lightUpMaterial.SetColor("_BaseColor", GetColorForLightLevel() * lightGlowAmount);
 
         // Find end point
         Vector3 lightBeamEndPos;
@@ -142,16 +150,15 @@ public class LightAmplifier : MonoBehaviour
 
         if (currentlyHitObject.TryGetComponent<LightReflector>(out LightReflector hitReflector))
         {
-            hitReflector.Activate(lightLevel);
-            return;
+            if (!hitReflector.Activate(lightLevel)) currentlyHitObject = null;
         }
         else if (currentlyHitObject.TryGetComponent<LightAmplifier>(out LightAmplifier amplifier))
         {
-            amplifier.Activate(lightLevel, lightSpawnPoint.forward);
+            if (!amplifier.Activate(lightLevel, lightSpawnPoint.forward)) currentlyHitObject = null;
         }
         else if (currentlyHitObject.TryGetComponent<LightReciever>(out LightReciever reciever))
         {
-            reciever.Activate(lightLevel);
+            if (!reciever.Activate(lightLevel)) currentlyHitObject = null;
         }
     }
 
@@ -166,6 +173,18 @@ public class LightAmplifier : MonoBehaviour
     {
         if (!Active && !remainCastingAfterActive) if (lightBeam != null) Destroy(lightBeam.gameObject);
     }
+
+    protected virtual Color GetColorForLightLevel() =>
+        lightLevel switch
+        {
+            0 => normalColor,
+            1 => level1Color,
+            2 => level2Color,
+            3 => level3Color,
+            4 => level4Color,
+            5 => level5Color,
+            _ => throw new System.NotImplementedException(),
+        };
 
     private void DeactivateCurrentlyHitReflector()
     {
