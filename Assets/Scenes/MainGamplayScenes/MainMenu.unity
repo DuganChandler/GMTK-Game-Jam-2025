@@ -478,8 +478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbc99d59ca235444a952e60e104460d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOrthoSize: 0
-  zoomDuration: 0
+  maxOrthoSize: 8
+  zoomDuration: 1
   moveSpeed: 10
   roationSpeed: 0.5
 --- !u!114 &466415432

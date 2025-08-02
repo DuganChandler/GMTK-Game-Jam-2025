@@ -16,8 +16,16 @@ public class CameraManager : MonoBehaviour {
     [SerializeField] private float moveSpeed = 10.0f;
     [SerializeField] private float roationSpeed = 0.5f;
 
+    [SerializeField] private Transform center;
+
+    public float MaxOrthoSize => maxOrthoSize;
+    public float ZoomDuration => zoomDuration;
+
     private void Awake() {
         _xRotation = transform.rotation.eulerAngles.x;
+        if (center) {
+            transform.position = new(center.position.x, transform.position.y, center.position.y);
+        }
     }
 
     void OnEnable() {

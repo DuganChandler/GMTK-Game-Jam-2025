@@ -33,6 +33,7 @@ public class CircleWIpeTransition : MonoBehaviour {
     }
 
     public void DrawBlackScreen() {
+
         var screenWidth = Screen.width;
         var screenHeight = Screen.height;
         var playerScreenPos = Camera.main.WorldToScreenPoint(player.position);
@@ -65,6 +66,8 @@ public class CircleWIpeTransition : MonoBehaviour {
     }
 
     private IEnumerator Transition(float duration, float beginRadius, float endRadius) {
+        GameManager.Instance.GameState = GameState.Busy;
+
         var mat = _blackScreen.material;
         var time = 0f;
         while (time <= duration) {

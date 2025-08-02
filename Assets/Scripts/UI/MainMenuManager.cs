@@ -2,15 +2,14 @@ using UnityEngine;
 using DG.Tweening;
 
 public class MainMenuManager : MonoBehaviour {
-    [Header("Zoom Variables")]
-    [SerializeField] private float zoomDuration = 1.0f;
-    [SerializeField] private float maxOrthoSize = 10.0f;
+    private CameraManager cameraManager;
 
     [Header("UI Elements")] 
     [SerializeField] private GameObject mainMenuElements;
     
     void Awake() {
         GameManager.Instance.GameState = GameState.MainMenu;
+        cameraManager = Camera.main.GetComponent<CameraManager>();
         mainMenuElements.SetActive(true);
     }
 
@@ -27,7 +26,7 @@ public class MainMenuManager : MonoBehaviour {
 
         Camera cam = Camera.main;
         cam
-          .DOOrthoSize(maxOrthoSize, zoomDuration)
+          .DOOrthoSize(cameraManager.MaxOrthoSize, cameraManager.ZoomDuration)
           .SetEase(Ease.OutBounce)
           .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
 
