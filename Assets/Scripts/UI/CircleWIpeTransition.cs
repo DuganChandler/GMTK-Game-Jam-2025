@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CircleWIpeTransition : MonoBehaviour {
-    public Transform player;
+    [SerializeField] private Transform player;
 
     private Canvas _canvas;
     private Image _blackScreen;
@@ -13,6 +14,8 @@ public class CircleWIpeTransition : MonoBehaviour {
     private static readonly int RADIUS = Shader.PropertyToID("_Radius");
     private static readonly int CENTER_X = Shader.PropertyToID("_CenterX");
     private static readonly int CENTER_Y = Shader.PropertyToID("_CenterY");
+
+    public static event Action<bool> OnTransitionComplete;
 
     private void Awake() {
         _canvas = GetComponent<Canvas>();
@@ -29,7 +32,7 @@ public class CircleWIpeTransition : MonoBehaviour {
         StartCoroutine(Transition(1, 1, 0));
     }
 
-    private void DrawBlackScreen() {
+    public void DrawBlackScreen() {
         var screenWidth = Screen.width;
         var screenHeight = Screen.height;
         var playerScreenPos = Camera.main.WorldToScreenPoint(player.position);
@@ -72,6 +75,12 @@ public class CircleWIpeTransition : MonoBehaviour {
             mat.SetFloat(RADIUS, radius);
 
             yield return null;
+        }
+
+        if (beginRadius == 1) {
+            OnTransitionComplete?.Invoke(true);
+        } else {
+            OnTransitionComplete?.Invoke(false);
         }
     }
 }

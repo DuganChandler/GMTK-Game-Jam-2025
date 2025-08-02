@@ -8,11 +8,24 @@ public class CameraManager : MonoBehaviour {
     private bool _isMoving, _isRotating, _isBusy;
     private float _xRotation, rotationDirection;
 
+    [Header("Camera Zoom")]
+    [SerializeField] private float maxOrthoSize;
+    [SerializeField] private float zoomDuration;
+
+    [Header("Camera Rotation")]
     [SerializeField] private float moveSpeed = 10.0f;
     [SerializeField] private float roationSpeed = 0.5f;
 
     private void Awake() {
         _xRotation = transform.rotation.eulerAngles.x;
+    }
+
+    void OnEnable() {
+        CircleWIpeTransition.OnTransitionComplete += SetCamera;
+    }
+
+    void OnDisable() {
+        CircleWIpeTransition.OnTransitionComplete -= SetCamera;
     }
 
     public void Onlook(InputAction.CallbackContext context) {
@@ -85,5 +98,17 @@ public class CameraManager : MonoBehaviour {
         };
 
         return new Vector3(_xRotation, endVal, 0.0f);
+    }
+
+    public void SetCamera(bool closed) {
+        if (closed) return; 
+
+        Camera cam = Camera.main;
+        Sequence seq = DOTween.Sequence();
+
+        seq
+          .Append(cam.DOOrthoSize(maxOrthoSize, zoomDuration).SetEase(Ease.OutBounce))
+          .Join(cam.transform.DOMove(new Vector3(0, 0, 0), zoomDuration).SetEase(Ease.OutQuad))
+          .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
     }
 }

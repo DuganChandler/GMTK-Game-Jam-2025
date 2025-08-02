@@ -23,7 +23,6 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     void StartGame() {
-        // Do a fade later?
         mainMenuElements.SetActive(false);
 
         Camera cam = Camera.main;
@@ -32,12 +31,6 @@ public class MainMenuManager : MonoBehaviour {
           .SetEase(Ease.OutBounce)
           .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
 
-        // Sequence seq = DOTween.Sequence();
-
-        // seq
-        //   .Append(cam.DOOrthoSize(maxOrthoSize, zoomDuration).SetEase(Ease.OutBounce))
-        //   .Join(cam.transform.DOMove(new Vector3(0, 0, 0), zoomDuration).SetEase(Ease.OutQuad))
-        //   .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
 
     }
 }
