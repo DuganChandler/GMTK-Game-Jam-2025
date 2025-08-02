@@ -2,16 +2,19 @@ using UnityEngine;
 using DG.Tweening;
 
 public class MainMenuManager : MonoBehaviour {
-    [Header("Zoom Variables")]
-    [SerializeField] private float zoomDuration = 1.0f;
-    [SerializeField] private float maxOrthoSize = 10.0f;
-
     [Header("UI Elements")] 
     [SerializeField] private GameObject mainMenuElements;
+
+    private CameraManager cameraManager;
     
     void Awake() {
         GameManager.Instance.GameState = GameState.MainMenu;
+        cameraManager = Camera.main.GetComponent<CameraManager>();
         mainMenuElements.SetActive(true);
+    }
+
+    void Start() {
+        SoundManager.Instance.PlayMusicNoFade("MainTheme"); 
     }
 
     public void OnStart() {
@@ -23,21 +26,12 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     void StartGame() {
-        // Do a fade later?
         mainMenuElements.SetActive(false);
 
         Camera cam = Camera.main;
         cam
-          .DOOrthoSize(maxOrthoSize, zoomDuration)
+          .DOOrthoSize(cameraManager.MaxOrthoSize, cameraManager.ZoomDuration)
           .SetEase(Ease.OutBounce)
           .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
-
-        // Sequence seq = DOTween.Sequence();
-
-        // seq
-        //   .Append(cam.DOOrthoSize(maxOrthoSize, zoomDuration).SetEase(Ease.OutBounce))
-        //   .Join(cam.transform.DOMove(new Vector3(0, 0, 0), zoomDuration).SetEase(Ease.OutQuad))
-        //   .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
-
     }
 }

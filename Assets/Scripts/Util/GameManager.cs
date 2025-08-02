@@ -22,4 +22,5 @@ public class GameManager : MonoBehaviour {
     }
 
     public GameState GameState { get; set; }
+    public int LevelNumber { get; set; }
 }
