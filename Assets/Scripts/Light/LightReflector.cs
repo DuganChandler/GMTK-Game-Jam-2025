@@ -140,7 +140,11 @@ public class LightReflector : MonoBehaviour
         else if (currentlyHitObject.TryGetComponent<LightAmplifier>(out LightAmplifier amplifier))
         {
             amplifier.Activate(lightLevel, lightSpawnPoint.forward);
-        }        
+        }
+        else if (currentlyHitObject.TryGetComponent<LightReciever>(out LightReciever reciever))
+        {
+            reciever.Activate(lightLevel);
+        }
     }
 
     private void Update()

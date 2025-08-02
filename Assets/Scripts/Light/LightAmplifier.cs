@@ -132,13 +132,27 @@ public class LightAmplifier : MonoBehaviour
             return;
         }
 
-        if (castHit.transform == currentlyHitObject) return;
+        if (castHit.collider.transform == currentlyHitObject) return;
 
 
         if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
-        currentlyHitObject = castHit.transform;
-        if (!castHit.transform.TryGetComponent<LightReflector>(out LightReflector hitReflector) || lightLevel <= 0) return;
-        hitReflector.Activate(lightLevel);
+        currentlyHitObject = castHit.collider.transform;
+
+        if (lightLevel <= 0) return;
+
+        if (currentlyHitObject.TryGetComponent<LightReflector>(out LightReflector hitReflector))
+        {
+            hitReflector.Activate(lightLevel);
+            return;
+        }
+        else if (currentlyHitObject.TryGetComponent<LightAmplifier>(out LightAmplifier amplifier))
+        {
+            amplifier.Activate(lightLevel, lightSpawnPoint.forward);
+        }
+        else if (currentlyHitObject.TryGetComponent<LightReciever>(out LightReciever reciever))
+        {
+            reciever.Activate(lightLevel);
+        }
     }
 
     private void Update()
