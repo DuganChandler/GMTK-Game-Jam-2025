@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class LightReciever : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int lightLevelRequiredToActivate;
+    [SerializeField] protected int lightLevelRequiredToActivate;
 
     [SerializeField] private UnityEvent onActivation;
 
