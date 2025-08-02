@@ -56,7 +56,7 @@ public class LightAmplifier : MonoBehaviour
     public void ActivateStart(int levelGoingIn, Vector3 direction)
     {
         if (lightBeam != null) Destroy(lightBeam.gameObject);
-        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflector();
 
         Active = true;
 
@@ -71,7 +71,7 @@ public class LightAmplifier : MonoBehaviour
         if (castOnStart || remainCastingAfterActive) return false;
 
         if (lightBeam != null) Destroy(lightBeam.gameObject);
-        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflector();
 
         Active = true;
 
@@ -85,7 +85,7 @@ public class LightAmplifier : MonoBehaviour
 
     public void Deactivate(int levelGoingOut)
     {
-        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflector();
 
         lightsGoingIntoThis.Remove(levelGoingOut);
         lightLevel = CalculateLightLevel();
@@ -134,8 +134,6 @@ public class LightAmplifier : MonoBehaviour
         // Check if light hit something
         if (!hitSomething)
         {
-            if (currentlyHitObject == null) return;
-
             DeactivateCurrentlyHitReflector();
             return;
         }
@@ -143,7 +141,7 @@ public class LightAmplifier : MonoBehaviour
         if (castHit.collider.transform == currentlyHitObject) return;
 
 
-        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflector();
         currentlyHitObject = castHit.collider.transform;
 
         if (lightLevel <= 0) return;
@@ -188,11 +186,12 @@ public class LightAmplifier : MonoBehaviour
 
     private void DeactivateCurrentlyHitReflector()
     {
-        if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector))
+        if (currentlyHitObject != null)
         {
-            currentlyHitReflector.Deactivate(lightLevel);
+            if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
+            else if (currentlyHitObject.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
+            currentlyHitObject = null;
         }
-        currentlyHitObject = null;
     }
 
     private int CalculateLightLevel()
