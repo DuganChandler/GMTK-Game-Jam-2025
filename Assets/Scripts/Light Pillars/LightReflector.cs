@@ -19,7 +19,7 @@ public class LightReflector : MonoBehaviour
     private LineRenderer lightBeam;
     private Transform currentlyHitObject;
     private int lightLevel;
-    [SerializeField] private List<int> lightsGoingIntoThis;
+    private List<int> lightsGoingIntoThis;
 
     private void Start()
     {
