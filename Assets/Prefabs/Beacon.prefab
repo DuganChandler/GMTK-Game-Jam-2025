@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3718124319428128997}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.62999916, y: 0.20499992, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.15, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -240,7 +240,6 @@ MonoBehaviour:
   lightLength: 75
   linePrefab: {fileID: 6604855539323102046, guid: 60c7bcdb40afca14495ee477efcc58e6, type: 3}
   lightSpawnPoint: {fileID: 3110197624564498476}
-  lightsGoingIntoThis: 
 --- !u!1 &8671444388479504071
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +265,7 @@ Transform:
   m_GameObject: {fileID: 8671444388479504071}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
   m_LocalScale: {x: 3.333333, y: 3.3333335, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
