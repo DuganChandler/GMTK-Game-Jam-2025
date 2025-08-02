@@ -9,8 +9,7 @@ public class SplitLightReflector : LightReflector
     public override void ActivateStart(int levelGoingIn)
     {
         if (lightBeam != null) Destroy(lightBeam.gameObject);
-        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
-        if (currentlyHitObjectTwo != null) DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflector();
 
         Active = true;
 
@@ -20,8 +19,7 @@ public class SplitLightReflector : LightReflector
 
     public override void Deactivate(int levelGoingOut)
     {
-        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
-        if (currentlyHitObjectTwo != null) DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflector();
 
         lightsGoingIntoThis.Remove(levelGoingOut);
         lightLevel = CalculateLightLevel();
@@ -82,8 +80,6 @@ public class SplitLightReflector : LightReflector
         // Check if light hit something
         if (!hitSomething)
         {
-            if (currentlyHitObject == null) return;
-
             DeactivateCurrentlyHitReflector();
             return;
         }
@@ -91,7 +87,7 @@ public class SplitLightReflector : LightReflector
         if (castHit.collider.transform == currentlyHitObject) return;
 
 
-        if (currentlyHitObject != null) DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflector();
         currentlyHitObject = castHit.collider.transform;
 
         if (lightLevel <= 0) return;
@@ -112,8 +108,6 @@ public class SplitLightReflector : LightReflector
         // Check if light hit something Two
         if (!hitSomethingTwo)
         {
-            if (currentlyHitObjectTwo == null) return;
-
             DeactivateCurrentlyHitReflector();
             return;
         }
@@ -121,7 +115,7 @@ public class SplitLightReflector : LightReflector
         if (castHitTwo.collider.transform == currentlyHitObjectTwo) return;
 
 
-        if (currentlyHitObjectTwo != null) DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflector();
         currentlyHitObjectTwo = castHitTwo.collider.transform;
 
         if (lightLevel <= 0) return;
@@ -149,12 +143,19 @@ public class SplitLightReflector : LightReflector
 
     protected override void DeactivateCurrentlyHitReflector()
     {
-        if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
-        else if (currentlyHitObject.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
-        currentlyHitObject = null;
-
-        if (currentlyHitObjectTwo.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflectorTwo)) currentlyHitReflectorTwo.Deactivate(lightLevel);
-        else if (currentlyHitObjectTwo.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifierTwo)) currentlyHitAmplifierTwo.Deactivate(lightLevel);
-        currentlyHitObjectTwo = null;
+        if (currentlyHitObject != null)
+        {
+            if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
+            else if (currentlyHitObject.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
+            currentlyHitObject = null;
+        }
+        
+        if (currentlyHitObjectTwo != null)
+        {
+            if (currentlyHitObjectTwo.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflectorTwo)) currentlyHitReflectorTwo.Deactivate(lightLevel);
+            else if (currentlyHitObjectTwo.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifierTwo)) currentlyHitAmplifierTwo.Deactivate(lightLevel);
+            currentlyHitObjectTwo = null;
+        }
+        
     }
 }
