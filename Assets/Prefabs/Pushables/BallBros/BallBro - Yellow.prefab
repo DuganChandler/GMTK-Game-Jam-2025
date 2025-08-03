@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5226612520556558654, guid: e75b02e8ffd797448b0d8891c6af1318, type: 3}
+      propertyPath: m_TagString
+      value: BallBro
+      objectReference: {fileID: 0}
     - target: {fileID: 6019153353245612267, guid: e75b02e8ffd797448b0d8891c6af1318, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -115,6 +119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallBro - Yellow
       objectReference: {fileID: 0}
+    - target: {fileID: 9182668952596743217, guid: e75b02e8ffd797448b0d8891c6af1318, type: 3}
+      propertyPath: m_TagString
+      value: BallBroYellow
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6095500923049986241, guid: e75b02e8ffd797448b0d8891c6af1318, type: 3}
     - {fileID: 2649369000378907520, guid: e75b02e8ffd797448b0d8891c6af1318, type: 3}
@@ -155,6 +163,7 @@ MonoBehaviour:
   linePrefab: {fileID: 6604855539323102046, guid: 60c7bcdb40afca14495ee477efcc58e6, type: 3}
   numberOfLightUpMaterial: 0
   lightGlowAmount: 2
+  normalColor: {r: 0, g: 0, b: 0, a: 0}
   level1Color: {r: 1, g: 1, b: 1, a: 1}
   level2Color: {r: 1, g: 1, b: 0, a: 1}
   level3Color: {r: 1, g: 0.5019608, b: 0, a: 1}

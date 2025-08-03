@@ -21,9 +21,10 @@ public class Dialog : MonoBehaviour{
     public DialogSequnce[] endingLevelSequnces;
 
     [Header("Ball Boy Sequences")]
-    public DialogSequnce[] ballBoyPurple;
-    public DialogSequnce[] ballBoyGreen;
-    public DialogSequnce[] ballBoyYellow;
+    public DialogSequnce[] ballBroPurple;
+    public DialogSequnce[] ballBroGreen;
+    public DialogSequnce[] ballBroYellow;
+    public DialogSequnce[] ballBroRed;
 
     [Header("Idle Sequences")]
     public DialogSequnce[] idleSequences;

@@ -1,18 +1,17 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-public class LightReciever : MonoBehaviour
-{
+public class LightReciever : MonoBehaviour {
     [Header("Settings")]
     [SerializeField] protected int lightLevelRequiredToActivate;
+    [SerializeField] LevelManager levelManager;
 
-    [SerializeField] private UnityEvent onActivation;
-
-    public bool Activate(int lightLevel)
-    {
+    public bool Activate(int lightLevel) {
         if (lightLevel < lightLevelRequiredToActivate) return false;
 
-        onActivation?.Invoke();
+        levelManager.TriggerLevelSolved();
+
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
 
         return true;
     }

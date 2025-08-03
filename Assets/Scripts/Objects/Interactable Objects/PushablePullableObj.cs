@@ -3,43 +3,50 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PushableObject : MonoBehaviour, IInteractable<PlayerController> {
-    [Tooltip("Units per second along the chosen axis")]
+    [Tooltip("Units per second when pushing/pulling")]
     public float pushSpeed = 3f;
     private Rigidbody rb;
 
+    [Tooltip("Y‐axis rotation to convert input into iso world‐space")]
+    public float isoYAngle = 45f;
+
+    private Quaternion isoRotation;
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
-        rb.isKinematic = true;                                // ← dynamic now
+        rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        rb.collisionDetectionMode = CollisionDetectionMode.Discrete; 
+        rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+
+        isoRotation = Quaternion.Euler(0f, isoYAngle, 0f);
     }
 
     public IEnumerator Interact(Transform playerT, PlayerController playerController) {
-        if (!playerController) yield break;
-
+        if (playerController == null) yield break;
         if (!playerController.TryGetComponent<Rigidbody>(out var playerRb)) yield break;
 
         rb.isKinematic = false;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
-        Vector3 toPlayer = playerT.position - transform.position;
-        float dotR = Vector3.Dot(toPlayer, transform.right);
-        float dotF = Vector3.Dot(toPlayer, transform.forward);
-
-        Vector3 slideAxis = Mathf.Abs(dotR) > Mathf.Abs(dotF)
-            ? transform.right
-            : transform.forward; 
-
-        float sideSign = (Mathf.Abs(dotR) > Mathf.Abs(dotF) ? dotR : dotF) >= 0 ? 1f : -1f;
+        int randomNum = Random.Range(0, 100);
+        if (randomNum <= 25) {
+            DialogInfo[] dialogInfos = DialogManager.Instance.GetRandomDialogInfos(
+                                            DialogManager.Instance.Dialog.pushPullSequences
+                                        );
+            StartCoroutine(DialogManager.Instance.ShowdialogSequence(dialogInfos));
+        }
 
         while (playerController.IsInteracting) {
-            float f = playerController.MoveInput.z;
-            if (Mathf.Abs(f) > 0.1f) {
-                Vector3 dir = -sideSign * f * slideAxis;
-                Vector3 delta = pushSpeed * Time.fixedDeltaTime * dir;
+            Vector3 rawInput = playerController.MoveInput;      // x/z from your PlayerController
+            Vector3 planar = new(rawInput.x, 0f, rawInput.z);
 
-                rb.MovePosition(transform.position + delta);
-                playerRb.MovePosition(playerT.position + delta);
+            if (planar.sqrMagnitude > 0.01f) {
+                // rotate that planar vector by our iso angle
+                Vector3 isoDir = (isoRotation * planar).normalized;
+                Vector3 delta   = pushSpeed * Time.fixedDeltaTime * isoDir;
+
+                rb.MovePosition(rb.position     + delta);
+                playerRb.MovePosition(playerRb.position + delta);
             }
 
             yield return new WaitForFixedUpdate();
@@ -49,3 +56,4 @@ public class PushableObject : MonoBehaviour, IInteractable<PlayerController> {
         rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
     }
 }
+

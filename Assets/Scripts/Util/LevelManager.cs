@@ -56,6 +56,10 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void TriggerLevelSolved() {
+        DialogManager.Instance.HaltDialog();
+        DialogInfo[] dialogInfos = DialogManager.Instance.Dialog.endingLevelSequnces[levelNumber].DialogInfos;
+        StartCoroutine(DialogManager.Instance.ShowdialogSequence(dialogInfos));
+
         OnLevelSolved?.Invoke();
     }
 }

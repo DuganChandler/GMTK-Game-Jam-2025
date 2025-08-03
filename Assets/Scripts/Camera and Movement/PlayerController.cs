@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     private Animator anim;
 
+    private float timeIdle = 0;
+
     private const string MOVEINPUTZ_PARAMETER = "MoveInputZ";
     private const string INTERACTING_PARAMETER = "IsInteracting";
 
@@ -38,6 +40,10 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+    }
+
+    void Update() {
+        CheckIdleDialog(); 
     }
 
     void FixedUpdate() {
@@ -127,7 +133,9 @@ public class PlayerController : MonoBehaviour {
 
             var collider = Physics.OverlapSphere(InteractPos, 0.3f, interactableLayer);
             if (collider.Length > 0) {
-                // dialog here -> dialog
+                int randomInt = Random.Range(0, 100);
+                if (randomInt <= 25) CheckInteractedDialog(collider);
+
                 if (collider[0].TryGetComponent<IInteractable<PlayerController>>(out var interactable)) {
                     IsInteracting = true;
                     anim.SetBool(INTERACTING_PARAMETER, true);
@@ -138,6 +146,44 @@ public class PlayerController : MonoBehaviour {
             rb.linearVelocity = Vector3.zero;            
             IsInteracting = false;
             anim.SetBool(INTERACTING_PARAMETER, false);
+        }
+    }
+
+    private void CheckInteractedDialog(Collider[] colliders) {
+        string tag = colliders[0].gameObject.tag;
+        DialogManager tempDialogManager = DialogManager.Instance;
+        DialogInfo[] dialogInfos = null;
+
+        switch (tag) {
+            case "BallBroRed":
+                dialogInfos = tempDialogManager.GetRandomDialogInfos(tempDialogManager.Dialog.ballBroRed);
+                break;
+            case "BallBroGreen":
+                dialogInfos = tempDialogManager.GetRandomDialogInfos(tempDialogManager.Dialog.ballBroGreen);
+                break;
+            case "BallBroYellow":
+                dialogInfos = tempDialogManager.GetRandomDialogInfos(tempDialogManager.Dialog.ballBroYellow);
+                break;
+            case "BallBroPurple":
+                dialogInfos = tempDialogManager.GetRandomDialogInfos(tempDialogManager.Dialog.ballBroPurple);
+               break;
+        }
+
+        StartCoroutine(tempDialogManager.ShowdialogSequence(dialogInfos));
+    }
+
+    private void CheckIdleDialog() {
+        if (rb.linearVelocity == Vector3.zero) {
+            timeIdle += Time.deltaTime;
+        } else {
+            timeIdle = 0;
+        }
+
+        if (timeIdle > 15) {
+            DialogInfo[] dialogInfos = DialogManager.Instance.GetRandomDialogInfos(
+                                            DialogManager.Instance.Dialog.idleSequences
+                                        );
+            StartCoroutine(DialogManager.Instance.ShowdialogSequence(dialogInfos));
         }
     }
 }

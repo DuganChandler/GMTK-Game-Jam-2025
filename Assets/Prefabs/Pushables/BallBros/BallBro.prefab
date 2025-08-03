@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2649369000378907520}
   m_Layer: 7
   m_Name: BallBro
-  m_TagString: Untagged
+  m_TagString: BallBro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushSpeed: 3
+  isoYAngle: 45
 --- !u!114 &2649369000378907520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +161,10 @@ PrefabInstance:
     - target: {fileID: 2940592891289612936, guid: 73b5768499ac65240967e86485ad8e70, type: 3}
       propertyPath: m_Name
       value: BallBro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940592891289612936, guid: 73b5768499ac65240967e86485ad8e70, type: 3}
+      propertyPath: m_TagString
+      value: BallBroWhite
       objectReference: {fileID: 0}
     - target: {fileID: 3805590104950375287, guid: 73b5768499ac65240967e86485ad8e70, type: 3}
       propertyPath: castOnStart
