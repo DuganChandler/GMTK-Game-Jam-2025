@@ -1,5 +1,4 @@
 using UnityEngine;
-// starting level, ending level, interacting with ball boy -> change depening on the type, moving objects, idle for too long
 
 [System.Serializable]
 public struct DialogInfo {
