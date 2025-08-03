@@ -3963,6 +3963,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 466415431}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
+      propertyPath: nextLevelName
+      value: Level2Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: startWithFade
       value: 0
       objectReference: {fileID: 0}
