@@ -167,6 +167,10 @@ PrefabInstance:
       value: BallBroWhite
       objectReference: {fileID: 0}
     - target: {fileID: 3805590104950375287, guid: 73b5768499ac65240967e86485ad8e70, type: 3}
+      propertyPath: rotatable
+      value: 
+      objectReference: {fileID: 2649369000378907520}
+    - target: {fileID: 3805590104950375287, guid: 73b5768499ac65240967e86485ad8e70, type: 3}
       propertyPath: castOnStart
       value: 0
       objectReference: {fileID: 0}

@@ -10,6 +10,7 @@ public class SplitLightReflector : LightReflector
     {
         if (lightBeam != null) Destroy(lightBeam.gameObject);
         DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflectorTwo();
 
         Active = true;
 
@@ -17,9 +18,26 @@ public class SplitLightReflector : LightReflector
         lightLevel = CalculateLightLevel();
     }
 
+    public override bool Activate(int levelGoingIn)
+    {
+        if (castOnStart || remainCastingAfterActive) return false;
+
+        if (lightBeam != null) Destroy(lightBeam.gameObject);
+        DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflectorTwo();
+
+        Active = true;
+
+        lightsGoingIntoThis.Add(levelGoingIn);
+        lightLevel = CalculateLightLevel();
+
+        return true;
+    }
+
     public override void Deactivate(int levelGoingOut)
     {
         DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflectorTwo();
 
         lightsGoingIntoThis.Remove(levelGoingOut);
         lightLevel = CalculateLightLevel();
@@ -29,6 +47,21 @@ public class SplitLightReflector : LightReflector
 
     protected override void CastLight()
     {
+        if (rotatable != null && rotatable.Busy)
+        {
+            if (lightBeam != null)
+            {
+                DeactivateCurrentlyHitReflector();
+                Destroy(lightBeam.gameObject);
+            }
+            if (lightBeamTwo != null)
+            {
+                DeactivateCurrentlyHitReflectorTwo();
+                Destroy(lightBeamTwo.gameObject);
+            }
+            return;
+        }
+
         bool hitSomething = Physics.SphereCast(lightSpawnPoint.position, lightRadius, lightSpawnPoint.forward, out RaycastHit castHit, lightLength, lightLayer);
         bool hitSomethingTwo = Physics.SphereCast(lightSpawnPoint.position, lightRadius, lightSpawnPointTwo.forward, out RaycastHit castHitTwo, lightLength, lightLayer);
 
@@ -81,57 +114,63 @@ public class SplitLightReflector : LightReflector
         if (!hitSomething)
         {
             DeactivateCurrentlyHitReflector();
-            return;
         }
-
-        if (castHit.collider.transform == currentlyHitObject) return;
-
-
-        DeactivateCurrentlyHitReflector();
-        currentlyHitObject = castHit.collider.transform;
-
-        if (lightLevel <= 0) return;
-
-        if (currentlyHitObject.TryGetComponent<LightReflector>(out LightReflector hitReflector))
+        else
         {
-            if (!hitReflector.Activate(lightLevel)) currentlyHitObject = null;
+            if (castHit.collider.transform != currentlyHitObject && castHit.collider.transform != transform)
+            {
+                DeactivateCurrentlyHitReflector();
+                currentlyHitObject = castHit.collider.transform;
+
+                if (lightLevel > 0)
+                {
+                    if (currentlyHitObject.TryGetComponent<LightReflector>(out LightReflector hitReflector))
+                    {
+                        if (!hitReflector.Activate(lightLevel)) currentlyHitObject = null;
+                    }
+                    else if (currentlyHitObject.TryGetComponent<LightAmplifier>(out LightAmplifier amplifier))
+                    {
+                        if (!amplifier.Activate(lightLevel, lightSpawnPoint.forward)) currentlyHitObject = null;
+                    }
+                    else if (currentlyHitObject.TryGetComponent<LightReciever>(out LightReciever reciever))
+                    {
+                        if (!reciever.Activate(lightLevel)) currentlyHitObject = null;
+                    }
+                }
+            }
         }
-        else if (currentlyHitObject.TryGetComponent<LightAmplifier>(out LightAmplifier amplifier))
-        {
-            if (!amplifier.Activate(lightLevel, lightSpawnPoint.forward)) currentlyHitObject = null;
-        }
-        else if (currentlyHitObject.TryGetComponent<LightReciever>(out LightReciever reciever))
-        {
-            if (!reciever.Activate(lightLevel)) currentlyHitObject = null;
-        }
+
+
 
         // Check if light hit something Two
         if (!hitSomethingTwo)
         {
-            DeactivateCurrentlyHitReflector();
-            return;
+            DeactivateCurrentlyHitReflectorTwo();
         }
-
-        if (castHitTwo.collider.transform == currentlyHitObjectTwo) return;
-
-
-        DeactivateCurrentlyHitReflector();
-        currentlyHitObjectTwo = castHitTwo.collider.transform;
-
-        if (lightLevel <= 0) return;
-
-        if (currentlyHitObjectTwo.TryGetComponent<LightReflector>(out LightReflector hitReflectorTwo))
+        else
         {
-            if (!hitReflectorTwo.Activate(lightLevel)) currentlyHitObject = null;
-            return;
-        }
-        else if (currentlyHitObjectTwo.TryGetComponent<LightAmplifier>(out LightAmplifier amplifierTwo))
-        {
-            if (!amplifierTwo.Activate(lightLevel, lightSpawnPointTwo.forward)) currentlyHitObject = null;
-        }
-        else if (currentlyHitObjectTwo.TryGetComponent<LightReciever>(out LightReciever recieverTwo))
-        {
-            if (!recieverTwo.Activate(lightLevel)) currentlyHitObject = null;
+            if (castHitTwo.collider.transform != currentlyHitObjectTwo && castHitTwo.collider.transform != transform)
+            {
+                DeactivateCurrentlyHitReflectorTwo();
+                currentlyHitObjectTwo = castHitTwo.collider.transform;
+
+                if (lightLevel > 0)
+                {
+                    if (currentlyHitObjectTwo.TryGetComponent<LightReflector>(out LightReflector hitReflectorTwo))
+                    {
+                        if (!hitReflectorTwo.Activate(lightLevel)) currentlyHitObject = null;
+                        return;
+                    }
+                    else if (currentlyHitObjectTwo.TryGetComponent<LightAmplifier>(out LightAmplifier amplifierTwo))
+                    {
+                        if (!amplifierTwo.Activate(lightLevel, lightSpawnPointTwo.forward)) currentlyHitObject = null;
+                    }
+                    else if (currentlyHitObjectTwo.TryGetComponent<LightReciever>(out LightReciever recieverTwo))
+                    {
+                        if (!recieverTwo.Activate(lightLevel)) currentlyHitObject = null;
+                    }
+                }
+            }
         }
     }
 
@@ -143,21 +182,25 @@ public class SplitLightReflector : LightReflector
 
     protected override void DeactivateCurrentlyHitReflector()
     {
-        Transform temp = currentlyHitObject;
-        currentlyHitObject = null;
-        if (temp != null)
+        if (currentlyHitObject != null)
         {
+            Transform temp = currentlyHitObject;
+            currentlyHitObject = null;
+
             if (temp.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
             else if (temp.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
         }
+    }
 
-        temp = currentlyHitObjectTwo;
-        currentlyHitObjectTwo = null;
-        if (temp != null)
+    private void DeactivateCurrentlyHitReflectorTwo()
+    {
+        if (currentlyHitObjectTwo != null)
         {
+            Transform temp = currentlyHitObjectTwo;
+            currentlyHitObjectTwo = null;
+
             if (temp.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflectorTwo)) currentlyHitReflectorTwo.Deactivate(lightLevel);
             else if (temp.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifierTwo)) currentlyHitAmplifierTwo.Deactivate(lightLevel);
         }
-
     }
 }

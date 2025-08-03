@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a92af584cabdc7418b1c1b71567b3da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -101,9 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightLevelRequiredToActivate: 1
-  onActivation:
-    m_PersistentCalls:
-      m_Calls: []
+  levelManager: {fileID: 0}
   redMat: {fileID: 2100000, guid: 16340d9f1eb340d49a190bbf9d178204, type: 2}
   orangeMat: {fileID: 2100000, guid: 581239f3cface0c4f9d9d98eb28a0ba5, type: 2}
   yellowMat: {fileID: 2100000, guid: d34b2a7af131feb4ebabde5695f9230c, type: 2}
