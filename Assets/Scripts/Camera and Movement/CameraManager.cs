@@ -53,7 +53,6 @@ public class CameraManager : MonoBehaviour {
 
     private void Start() {
         if (_center) {
-            Debug.Log(_center.position);
             transform.position = new(_center.position.x, transform.position.y, _center.position.z);
         }
     }

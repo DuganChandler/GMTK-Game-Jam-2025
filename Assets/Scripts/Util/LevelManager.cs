@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
@@ -22,6 +23,8 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private LevelTransitioner levelTransitioner;
     [SerializeField] private string nextLevelName;
 
+    public static event Action OnLevelSolved;
+
     void Awake() {
         if (cameraManager) SetCameraSettings();
         if (levelTransitioner) SetTransitionSettings();
@@ -43,11 +46,16 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void SetTransitionSettings() {
+        levelTransitioner.CircleWIpeTransition = circleWIpeTransition;
         levelTransitioner.SceneName = nextLevelName;
     }
 
     public void SetFadeSettings() {
         circleWIpeTransition.Player = player;
         circleWIpeTransition.FadeDuration = fadeDuration;
+    }
+
+    public void TriggerLevelSolved() {
+        OnLevelSolved?.Invoke();
     }
 }
