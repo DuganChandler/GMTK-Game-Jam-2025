@@ -418,6 +418,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125214791}
   m_CullTransparentMesh: 1
+--- !u!1 &163877045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163877046}
+  m_Layer: 0
+  m_Name: --- ESSENTIALS ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &163877046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163877045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.610867, y: -30.332487, z: 42.71886}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &207768782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,7 +1798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7e3081253fb5f4da82c0797b659b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleWIpeTransition: {fileID: 2034839153}
 --- !u!114 &2034839153 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 871649496480907531, guid: a8085aab9e1c19c478a5a9545912dcc0, type: 3}
@@ -2110,6 +2140,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8720595289374526648, guid: f030814d8d7951147bb4d924657f1799, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 14.222222
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720595289374526648, guid: f030814d8d7951147bb4d924657f1799, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2225,6 +2263,10 @@ PrefabInstance:
       value: LevelManager
       objectReference: {fileID: 0}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
+      propertyPath: center
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 294758962}
@@ -2232,6 +2274,10 @@ PrefabInstance:
       propertyPath: cameraManager
       value: 
       objectReference: {fileID: 466415431}
+    - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
+      propertyPath: startWithFade
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: levelTransitioner
       value: 
@@ -2350,6 +2396,11 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 163877046}
+  - {fileID: 7629474237156545783}
+  - {fileID: 1446907485637948390}
+  - {fileID: 8953693986198164758}
+  - {fileID: 2874780242170261734}
   - {fileID: 207768783}
   - {fileID: 2051732094}
   - {fileID: 696910050}
@@ -2357,11 +2408,7 @@ SceneRoots:
   - {fileID: 661704179}
   - {fileID: 1741189269}
   - {fileID: 1847755808}
-  - {fileID: 1446907485637948390}
-  - {fileID: 2874780242170261734}
-  - {fileID: 1907763664}
   - {fileID: 1369194431}
-  - {fileID: 8953693986198164758}
+  - {fileID: 1907763664}
   - {fileID: 352619342}
   - {fileID: 2129917418}
-  - {fileID: 7629474237156545783}

@@ -801,8 +801,8 @@ MonoBehaviour:
   moveSpeed: 10
   rotationSpeed: 0.5
   center: {fileID: 3918296444402486086}
-  levelTransitioner: {fileID: 0}
-  nextLevelName: 
+  levelTransitioner: {fileID: 1887018721}
+  nextLevelName: MainMenu
 --- !u!4 &866297445
 Transform:
   m_ObjectHideFlags: 0
@@ -2017,6 +2017,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1025131987980744657, guid: c9aa0e5e0d85b0747a7ad6bfe86086ed, type: 3}
+      propertyPath: circleWIpeTransition
+      value: 
+      objectReference: {fileID: 924708747}
     - target: {fileID: 1452079445406257920, guid: c9aa0e5e0d85b0747a7ad6bfe86086ed, type: 3}
       propertyPath: m_Name
       value: DoorWallHalfThickLarge
@@ -2061,11 +2065,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4392315455171566123, guid: c9aa0e5e0d85b0747a7ad6bfe86086ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9aa0e5e0d85b0747a7ad6bfe86086ed, type: 3}
+--- !u!114 &1887018721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1025131987980744657, guid: c9aa0e5e0d85b0747a7ad6bfe86086ed, type: 3}
+  m_PrefabInstance: {fileID: 1887018720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7e3081253fb5f4da82c0797b659b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1963519581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2319,6 +2338,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5157555394752622270, guid: 073baee6d858acd40825a876a78ab358, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157555394752622270, guid: 073baee6d858acd40825a876a78ab358, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []

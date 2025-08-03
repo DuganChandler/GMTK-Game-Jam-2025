@@ -2,7 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelTransitioner : MonoBehaviour {
-    [SerializeField] private CircleWIpeTransition circleWIpeTransition;
+
+    private CircleWIpeTransition _circleWIpeTransition;
+    public CircleWIpeTransition CircleWIpeTransition {
+        set {
+            _circleWIpeTransition = value;
+        }
+    }
 
     private string _sceneName;
     public string SceneName {
@@ -19,9 +25,10 @@ public class LevelTransitioner : MonoBehaviour {
         CircleWIpeTransition.OnTransitionComplete -= StartSceneLoad; 
     }
 
+
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            circleWIpeTransition.CloseBlackScreen();
+            _circleWIpeTransition.CloseBlackScreen();
         } 
     }
 
