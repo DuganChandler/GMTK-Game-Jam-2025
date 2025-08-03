@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour {
             timeIdle = 0;
         }
 
-        if (timeIdle > 15) {
+        if (timeIdle > 15 && DialogManager.Instance != null) {
             DialogInfo[] dialogInfos = DialogManager.Instance.GetRandomDialogInfos(
                                             DialogManager.Instance.Dialog.idleSequences
                                         );
