@@ -5,7 +5,8 @@ public class LightReflector : MonoBehaviour
 {
     [Header("Pillar Settings")]
     [SerializeField] protected bool remainCastingAfterActive = false;
-    [SerializeField] private bool castOnStart = false;
+    [SerializeField] protected bool castOnStart = false;
+    [SerializeField] private int initialLightLevel = 1;
     [SerializeField] protected LayerMask lightLayer;
     [SerializeField] protected float lightRadius = 0.25f;
     [SerializeField] protected float lightLength = 15f;
@@ -24,6 +25,7 @@ public class LightReflector : MonoBehaviour
     [SerializeField] protected Color level5Color;
 
     [Header("Components")]
+    [SerializeField] protected RotateableObject rotatable;
     [SerializeField] protected Transform lightSpawnPoint;
 
     public bool Active { get; protected set; }
@@ -49,7 +51,7 @@ public class LightReflector : MonoBehaviour
             lightUpMaterial = rend.materials[numberOfLightUpMaterial];
         }
 
-        if (castOnStart) ActivateStart(1);
+        if (castOnStart) ActivateStart(initialLightLevel);
     }
 
     public virtual void ActivateStart(int levelGoingIn)
@@ -63,9 +65,8 @@ public class LightReflector : MonoBehaviour
         lightLevel = CalculateLightLevel();
     }
 
-    public bool Activate(int levelGoingIn)
+    public virtual bool Activate(int levelGoingIn)
     {
-        Debug.Log("Activate called");
         if (castOnStart || remainCastingAfterActive) return false;
 
         if (lightBeam != null) Destroy(lightBeam.gameObject);
@@ -91,6 +92,16 @@ public class LightReflector : MonoBehaviour
 
     protected virtual void CastLight()
     {
+        if (rotatable != null && rotatable.Busy)
+        {
+            if (lightBeam != null)
+            {
+                DeactivateCurrentlyHitReflector();
+                Destroy(lightBeam.gameObject);
+            }
+            return;
+        }
+
         bool hitSomething = Physics.SphereCast(lightSpawnPoint.position, lightRadius, lightSpawnPoint.forward, out RaycastHit castHit, lightLength, lightLayer);
 
         // Spawn light
@@ -128,7 +139,7 @@ public class LightReflector : MonoBehaviour
             return;
         }
 
-        if (castHit.collider.transform == currentlyHitObject) return;
+        if (castHit.collider.transform == currentlyHitObject || castHit.collider.transform == transform) return;
 
 
         DeactivateCurrentlyHitReflector();

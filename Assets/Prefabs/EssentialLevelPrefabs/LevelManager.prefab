@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b3c32f663dd1943b36aef14ac4e662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelNumber: 0
   circleWIpeTransition: {fileID: 0}
   startWithFade: 0
   fadeDuration: 1
@@ -52,7 +53,7 @@ MonoBehaviour:
   maxOrthoSize: 8
   zoomDuration: 1
   moveSpeed: 10
-  rotationSpeed: 0.5
+  rotationSpeed: 1
   center: {fileID: 0}
   levelTransitioner: {fileID: 0}
   nextLevelName: ChandlerTestScene

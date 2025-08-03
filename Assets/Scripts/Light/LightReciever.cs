@@ -5,7 +5,7 @@ public class LightReciever : MonoBehaviour {
     [SerializeField] protected int lightLevelRequiredToActivate;
     [SerializeField] LevelManager levelManager;
 
-    public bool Activate(int lightLevel) {
+    public virtual bool Activate(int lightLevel) {
         if (lightLevel < lightLevelRequiredToActivate) return false;
 
         levelManager.TriggerLevelSolved();

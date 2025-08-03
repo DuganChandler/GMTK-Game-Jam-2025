@@ -7,6 +7,7 @@ public class LightAmplifier : MonoBehaviour
     [SerializeField] private bool remainCastingAfterActive = false;
     [SerializeField] private bool castOnStart = false;
     [SerializeField] private bool isOmnidirectional = false;
+    [SerializeField] private int initialLightLevel = 1;
     [SerializeField] private LayerMask lightLayer;
     [SerializeField] private float lightRadius = 0.25f;
     [SerializeField] private float lightLength = 15f;
@@ -57,7 +58,7 @@ public class LightAmplifier : MonoBehaviour
             lightUpMaterialTwo = rend.materials[numberOfLightUpMaterialTwo];
         }
 
-        if (castOnStart) Activate(1, transform.forward);
+        if (castOnStart) Activate(initialLightLevel, transform.forward);
     }
 
     public void ActivateStart(int levelGoingIn, Vector3 direction)
@@ -75,7 +76,7 @@ public class LightAmplifier : MonoBehaviour
 
     public virtual bool Activate(int levelGoingIn, Vector3 direction)
     {
-        if (castOnStart || remainCastingAfterActive) return false;
+        if (castOnStart || remainCastingAfterActive || Active) return false;
 
         if (lightBeam != null) Destroy(lightBeam.gameObject);
         DeactivateCurrentlyHitReflector();
@@ -131,8 +132,7 @@ public class LightAmplifier : MonoBehaviour
             lightBeamEndPos = lightSpawnPoint.InverseTransformPoint(castHit.point);
             lightBeamEndPos.y = 0;
         }
-        else lightBeamEndPos = lightSpawnPoint.TransformDirection(lightSpawnPoint.InverseTransformDirection(directionOfSourceLight)) * lightLength;
-
+        else lightBeamEndPos = lightSpawnPoint.InverseTransformDirection(directionOfSourceLight) * lightLength;
 
         // Set points on line
         lightBeam.positionCount = 2;
@@ -146,7 +146,7 @@ public class LightAmplifier : MonoBehaviour
             return;
         }
 
-        if (castHit.collider.transform == currentlyHitObject) return;
+        if (castHit.collider.transform == currentlyHitObject || castHit.collider.transform == transform) return;
 
 
         DeactivateCurrentlyHitReflector();
