@@ -545,10 +545,50 @@ MonoBehaviour:
       portrait: {fileID: -1293826140, guid: ce30235a14ff1ce4bb68f1d2016ec1c3, type: 3}
       duartion: 1.5
       isPlayer: 1
-  ballBroPurple: []
-  ballBroGreen: []
-  ballBroYellow: []
-  ballBroRed: []
+  ballBroPurple:
+  - _dialogInfos:
+    - line: So stuffed I can't move. My neck moves just fine though!
+      portrait: {fileID: 21300000, guid: 88f9aae6b057ee846a135e17e86a64db, type: 3}
+      duartion: 1.5
+      isPlayer: 0
+  - _dialogInfos:
+    - line: "There\u2019s food where?! Let me look around."
+      portrait: {fileID: 21300000, guid: 88f9aae6b057ee846a135e17e86a64db, type: 3}
+      duartion: 1.5
+      isPlayer: 0
+  ballBroGreen:
+  - _dialogInfos:
+    - line: Golly, you're throwing a prison break?
+      portrait: {fileID: 21300000, guid: 2d0511e3bec9b2a438d0a7956f9cdd99, type: 3}
+      duartion: 1.5
+      isPlayer: 0
+  - _dialogInfos:
+    - line: I can go wherever if you need help!
+      portrait: {fileID: 21300000, guid: 2d0511e3bec9b2a438d0a7956f9cdd99, type: 3}
+      duartion: 1.5
+      isPlayer: 0
+  ballBroYellow:
+  - _dialogInfos:
+    - line: "I've got a splittin\u2019 headache"
+      portrait: {fileID: 21300000, guid: d5774765d45714b40b33a432d6461dd5, type: 3}
+      duartion: 1.5
+      isPlayer: 0
+  - _dialogInfos:
+    - line: "Can't seem\u2026to think\u2026straight"
+      portrait: {fileID: 21300000, guid: d5774765d45714b40b33a432d6461dd5, type: 3}
+      duartion: 1.5
+      isPlayer: 0
+  ballBroRed:
+  - _dialogInfos:
+    - line: Nuh-uh I don't wanna move
+      portrait: {fileID: 21300000, guid: dc302aa0cccc84547a85cac8628659e4, type: 3}
+      duartion: 1.5
+      isPlayer: 0
+  - _dialogInfos:
+    - line: I've done unspeakable crimes and need to be in timeout.
+      portrait: {fileID: 21300000, guid: dc302aa0cccc84547a85cac8628659e4, type: 3}
+      duartion: 1.5
+      isPlayer: 0
   idleSequences:
   - _dialogInfos:
     - line: If I amplify the intensity of this light to be the same color as the
