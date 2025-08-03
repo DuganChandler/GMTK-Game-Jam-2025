@@ -134,10 +134,6 @@ public class LightAmplifier : MonoBehaviour
         }
         else lightBeamEndPos = lightSpawnPoint.InverseTransformDirection(directionOfSourceLight) * lightLength;
 
-        print(transform.InverseTransformDirection(directionOfSourceLight));
-        print(lightSpawnPoint.InverseTransformDirection(directionOfSourceLight));
-
-
         // Set points on line
         lightBeam.positionCount = 2;
         lightBeam.SetPosition(0, Vector3.zero);

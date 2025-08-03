@@ -4008,6 +4008,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
+      propertyPath: maxOrthoSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: cameraManager
       value: 
       objectReference: {fileID: 466415431}
