@@ -3159,7 +3159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1896618446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3778,7 +3778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5734264102934695189, guid: d09c5ca793517b14ca9e35ba8be96715, type: 3}
       propertyPath: m_Name
-      value: Pillar - Big
+      value: Pillar - Unmovable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3835,7 +3835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5734264102934695189, guid: d09c5ca793517b14ca9e35ba8be96715, type: 3}
       propertyPath: m_Name
-      value: Pillar - Big (1)
+      value: Pillar - Unmovable (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3897,7 +3897,7 @@ PrefabInstance:
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: center
       value: 
-      objectReference: {fileID: 35755604}
+      objectReference: {fileID: 0}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: player
       value: 
