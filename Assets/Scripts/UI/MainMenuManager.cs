@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class MainMenuManager : MonoBehaviour {
