@@ -3559,6 +3559,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5634043649091191598, guid: e3004755b05d1e4478b898d711663c19, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1327297847}
+    - target: {fileID: 5634043649091191598, guid: e3004755b05d1e4478b898d711663c19, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634043649091191598, guid: e3004755b05d1e4478b898d711663c19, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5681057964803006327, guid: e3004755b05d1e4478b898d711663c19, type: 3}
       propertyPath: m_Name
       value: PauseMenuCanvas
