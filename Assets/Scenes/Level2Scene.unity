@@ -2617,7 +2617,7 @@ PrefabInstance:
       objectReference: {fileID: 1660310218}
     - target: {fileID: 861513629860748254, guid: bdf6f9767189c0f41aa31abe91f1f59a, type: 3}
       propertyPath: lightLevelRequiredToActivate
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 861513629860748254, guid: bdf6f9767189c0f41aa31abe91f1f59a, type: 3}
       propertyPath: onActivation.m_PersistentCalls.m_Calls.Array.size

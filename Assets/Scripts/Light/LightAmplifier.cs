@@ -27,6 +27,7 @@ public class LightAmplifier : MonoBehaviour
     [SerializeField] private Color level4Color;
     [SerializeField] private Color level5Color;
     [SerializeField] private Color level6Color;
+    [SerializeField] private Color level7Color;
 
     public bool Active { get; private set; }
 
@@ -196,6 +197,8 @@ public class LightAmplifier : MonoBehaviour
             3 => level3Color,
             4 => level4Color,
             5 => level5Color,
+            6 => level6Color,
+            7 => level7Color,
             _ => throw new System.NotImplementedException(),
         };
 
