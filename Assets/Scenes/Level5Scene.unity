@@ -3968,7 +3968,7 @@ PrefabInstance:
       objectReference: {fileID: 1189648155}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: levelNumber
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: cameraManager
@@ -3976,7 +3976,7 @@ PrefabInstance:
       objectReference: {fileID: 466415431}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: nextLevelName
-      value: Level4Scene
+      value: WinScreen
       objectReference: {fileID: 0}
     - target: {fileID: 9138097029356266194, guid: 22a626d4f91a65440b1692b58db3b46c, type: 3}
       propertyPath: startWithFade
