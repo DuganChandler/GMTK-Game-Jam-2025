@@ -235,7 +235,7 @@ MonoBehaviour:
   castOnStart: 0
   lightLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 567
   lightRadius: 0.25
   lightLength: 75
   linePrefab: {fileID: 6604855539323102046, guid: 60c7bcdb40afca14495ee477efcc58e6, type: 3}

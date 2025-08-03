@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float walkSpeed = 8f;
     [SerializeField] private LayerMask interactableLayer;
@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour {
     private Vector3 velocity = Vector3.zero;
     private Vector3 moveInput;
     private Rigidbody rb;
+    private Animator anim;
+
+    private const string MOVEINPUTZ_PARAMETER = "MoveInputZ";
+    private const string INTERACTING_PARAMETER = "IsInteracting";
 
     public Vector3 MoveInput => moveInput;
 
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate() {
@@ -75,6 +80,13 @@ public class PlayerController : MonoBehaviour {
         } else {
             IsMoving = false;
         }
+
+        if (!IsInteracting) {
+            anim.SetFloat(MOVEINPUTZ_PARAMETER, Mathf.Abs(moveInput.magnitude));
+        } else 
+        {
+            anim.SetFloat(MOVEINPUTZ_PARAMETER, moveInput.z);
+        }
     }
 
     public void OnInteractRotateRight(InputAction.CallbackContext ctx) {
@@ -103,7 +115,6 @@ public class PlayerController : MonoBehaviour {
                     StartCoroutine(interactable.Interact(transform, -1.0f));
                 }
             }
-
         }
     }
 
@@ -118,12 +129,14 @@ public class PlayerController : MonoBehaviour {
             if (collider.Length > 0) {
                 if (collider[0].TryGetComponent<IInteractable<PlayerController>>(out var interactable)) {
                     IsInteracting = true;
+                    anim.SetBool(INTERACTING_PARAMETER, true);
                     StartCoroutine(interactable.Interact(transform, this));
                 }
             }
         } else if (ctx.canceled) {
             rb.linearVelocity = Vector3.zero;            
             IsInteracting = false;
+            anim.SetBool(INTERACTING_PARAMETER, false);
         }
     }
 }

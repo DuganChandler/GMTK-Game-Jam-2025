@@ -17,6 +17,7 @@ public class LightAmplifier : MonoBehaviour
 
     [Header("Colors")]
     [SerializeField] private int numberOfLightUpMaterial = -1;
+    [SerializeField] private int numberOfLightUpMaterialTwo = -1;
     [SerializeField] private float lightGlowAmount = 4;
     [SerializeField] private Color normalColor;
     [SerializeField] private Color level1Color;
@@ -28,6 +29,7 @@ public class LightAmplifier : MonoBehaviour
     public bool Active { get; private set; }
 
     private Material lightUpMaterial;
+    private Material lightUpMaterialTwo;
     private LineRenderer lightBeam;
     private Renderer rend;
     private Transform currentlyHitObject;
@@ -48,6 +50,11 @@ public class LightAmplifier : MonoBehaviour
         if (rend != null && numberOfLightUpMaterial > -1 && numberOfLightUpMaterial < rend.materials.Length)
         {
             lightUpMaterial = rend.materials[numberOfLightUpMaterial];
+        }
+
+        if (rend != null && numberOfLightUpMaterialTwo > -1 && numberOfLightUpMaterialTwo < rend.materials.Length)
+        {
+            lightUpMaterialTwo = rend.materials[numberOfLightUpMaterialTwo];
         }
 
         if (castOnStart) Activate(1, transform.forward);
@@ -95,7 +102,7 @@ public class LightAmplifier : MonoBehaviour
 
     private void CastLight()
     {
-        if (!isOmnidirectional && lightSpawnPoint.forward != directionOfSourceLight)
+        if (!isOmnidirectional && (lightSpawnPoint.forward != directionOfSourceLight && lightSpawnPoint.forward != -directionOfSourceLight))
         {
             if (lightBeam != null) Destroy(lightBeam);
             return;
@@ -114,7 +121,8 @@ public class LightAmplifier : MonoBehaviour
         lightBeam.startColor = lightBeam.endColor = GetColorForLightLevel();
 
         // Color any additional materials
-        lightUpMaterial.SetColor("_BaseColor", GetColorForLightLevel() * lightGlowAmount);
+        if (lightUpMaterial != null) lightUpMaterial.SetColor("_BaseColor", GetColorForLightLevel() * lightGlowAmount);
+        if (lightUpMaterialTwo != null) lightUpMaterialTwo.SetColor("_BaseColor", GetColorForLightLevel() * lightGlowAmount);
 
         // Find end point
         Vector3 lightBeamEndPos;
@@ -169,7 +177,13 @@ public class LightAmplifier : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!Active && !remainCastingAfterActive) if (lightBeam != null) Destroy(lightBeam.gameObject);
+        if (!Active && !remainCastingAfterActive)
+            if (lightBeam != null)
+            {
+                Destroy(lightBeam.gameObject);
+                if (lightUpMaterial != null) lightUpMaterial.SetColor("_BaseColor", GetColorForLightLevel());
+                if (lightUpMaterialTwo) lightUpMaterialTwo.SetColor("_BaseColor", GetColorForLightLevel());
+            }
     }
 
     protected virtual Color GetColorForLightLevel() =>
@@ -186,11 +200,12 @@ public class LightAmplifier : MonoBehaviour
 
     private void DeactivateCurrentlyHitReflector()
     {
-        if (currentlyHitObject != null)
+        Transform temp = currentlyHitObject;
+        currentlyHitObject = null;
+        if (temp != null)
         {
-            if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
-            else if (currentlyHitObject.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
-            currentlyHitObject = null;
+            if (temp.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
+            else if (temp.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
         }
     }
 
