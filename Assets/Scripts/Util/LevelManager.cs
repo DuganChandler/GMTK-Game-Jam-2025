@@ -35,6 +35,8 @@ public class LevelManager : MonoBehaviour {
 
     void Start() {
         if (startWithFade) circleWIpeTransition.OpenBlackScreen();
+        
+        if (DialogManager.Instance == null) return;
 
         DialogManager.Instance.HaltDialog();
 
