@@ -173,13 +173,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void CheckIdleDialog() {
-        if (rb.linearVelocity == Vector3.zero) {
+        if (rb.linearVelocity == Vector3.zero && GameManager.Instance.GameState == GameState.Playing) {
             timeIdle += Time.deltaTime;
         } else {
             timeIdle = 0;
         }
 
-        if (timeIdle > 30 && DialogManager.Instance != null) {
+
+        if (timeIdle > 15 && DialogManager.Instance != null) {
+            timeIdle = 0;
             DialogInfo[] dialogInfos = DialogManager.Instance.GetRandomDialogInfos(
                                             DialogManager.Instance.Dialog.idleSequences
                                         );
