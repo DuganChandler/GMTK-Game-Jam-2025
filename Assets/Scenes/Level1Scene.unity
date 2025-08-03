@@ -2063,6 +2063,8 @@ MonoBehaviour:
   musicTracks:
   - trackName: MainTheme
     audioClip: {fileID: 8300000, guid: 7ef0515aaaadb8846a16bb165a1aacc0, type: 3}
+  - trackName: PauseTheme
+    audioClip: {fileID: 8300000, guid: 44e5e1cc7f2dded4dafdd27351151394, type: 3}
 --- !u!4 &1577223877
 Transform:
   m_ObjectHideFlags: 0
@@ -3111,6 +3113,14 @@ PrefabInstance:
     - target: {fileID: 8720595289374526648, guid: f030814d8d7951147bb4d924657f1799, type: 3}
       propertyPath: m_LocalScale.y
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720595289374526648, guid: f030814d8d7951147bb4d924657f1799, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000002861023
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720595289374526648, guid: f030814d8d7951147bb4d924657f1799, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50.000004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,9 +15,15 @@ public class PauseMenuManager : MonoBehaviour
         if (timer > 0) return;
         if (GameManager.Instance.GameState != GameState.Playing && GameManager.Instance.GameState != GameState.Pause) return;
 
+        if (GameManager.Instance.GameState == GameState.Pause) {
+            GameManager.Instance.GameState = GameState.Playing;
+            SoundManager.Instance.PlayMusicNoFade("MainTheme");
+        }
+        else {
+            GameManager.Instance.GameState = GameState.Pause;
+            SoundManager.Instance.PlayMusicNoFade("PauseTheme");
+        } 
         pauseMenu.SetActive(!pauseMenu.activeSelf);
-        if (GameManager.Instance.GameState == GameState.Pause) GameManager.Instance.GameState = GameState.Playing;
-        else GameManager.Instance.GameState = GameState.Pause;
 
         timer = 0.1f;
     }
