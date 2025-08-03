@@ -28,9 +28,17 @@ public class PushableObject : MonoBehaviour, IInteractable<PlayerController> {
         rb.isKinematic = false;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
+        int randomNum = Random.Range(0, 100);
+        if (randomNum <= 25) {
+            DialogInfo[] dialogInfos = DialogManager.Instance.GetRandomDialogInfos(
+                                            DialogManager.Instance.Dialog.pushPullSequences
+                                        );
+            StartCoroutine(DialogManager.Instance.ShowdialogSequence(dialogInfos));
+        }
+
         while (playerController.IsInteracting) {
             Vector3 rawInput = playerController.MoveInput;      // x/z from your PlayerController
-            Vector3 planar = new Vector3(rawInput.x, 0f, rawInput.z);
+            Vector3 planar = new(rawInput.x, 0f, rawInput.z);
 
             if (planar.sqrMagnitude > 0.01f) {
                 // rotate that planar vector by our iso angle

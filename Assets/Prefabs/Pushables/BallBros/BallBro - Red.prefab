@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallBro - Red
       objectReference: {fileID: 0}
+    - target: {fileID: 9182668952596743217, guid: e75b02e8ffd797448b0d8891c6af1318, type: 3}
+      propertyPath: m_TagString
+      value: BallBroRed
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5223432993110362541, guid: e75b02e8ffd797448b0d8891c6af1318, type: 3}
     - {fileID: 2649369000378907520, guid: e75b02e8ffd797448b0d8891c6af1318, type: 3}

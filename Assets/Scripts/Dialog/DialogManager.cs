@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DialogManager : MonoBehaviour {
@@ -32,6 +33,7 @@ public class DialogManager : MonoBehaviour {
     }
 
     public IEnumerator ShowPlayerDialog(DialogInfo[] dialogInfo) {
+        if (dialogInfo == null || dialogInfo.Length <= 0 || SequenceIsShowing) yield break;
         playerdialogBox.gameObject.SetActive(true);
         PlayerIsShowing = true;
 
@@ -46,6 +48,7 @@ public class DialogManager : MonoBehaviour {
     }
 
     public IEnumerator ShowOtherDialog(DialogInfo[] dialogInfo) {
+        if (dialogInfo == null || dialogInfo.Length <= 0 || SequenceIsShowing) yield break;
         otherDialogBox.gameObject.SetActive(true);
         OtherIsShowing= true;
 
@@ -60,6 +63,7 @@ public class DialogManager : MonoBehaviour {
     }
 
     public IEnumerator ShowdialogSequence(DialogInfo[] dialogInfo) {
+        if (dialogInfo == null || dialogInfo.Length <= 0 || SequenceIsShowing) yield break;
         SequenceIsShowing = true;
 
         for (int i = 0; i < dialogInfo.Length; ++i) {
@@ -110,4 +114,10 @@ public class DialogManager : MonoBehaviour {
         StopCoroutine(ShowPlayerDialog(null));
         StopCoroutine(TypeDialog(null, null));
     }
+
+    public DialogInfo[] GetRandomDialogInfos(DialogSequnce[] dialogSequnces) {
+        if (dialogSequnces.Length <= 0) return null;
+        int randomIndex = Random.Range(0, dialogSequnces.Length);
+        return dialogSequnces[randomIndex].DialogInfos;
+    } 
 }
