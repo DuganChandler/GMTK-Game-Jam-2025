@@ -2307,6 +2307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenTransitionCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2595027795862785289, guid: a8085aab9e1c19c478a5a9545912dcc0, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3902206233174410259, guid: a8085aab9e1c19c478a5a9545912dcc0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
