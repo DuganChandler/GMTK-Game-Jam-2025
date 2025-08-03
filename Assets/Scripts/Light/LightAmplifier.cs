@@ -76,7 +76,7 @@ public class LightAmplifier : MonoBehaviour
 
     public virtual bool Activate(int levelGoingIn, Vector3 direction)
     {
-        if (castOnStart || remainCastingAfterActive) return false;
+        if (castOnStart || remainCastingAfterActive || Active) return false;
 
         if (lightBeam != null) Destroy(lightBeam.gameObject);
         DeactivateCurrentlyHitReflector();
