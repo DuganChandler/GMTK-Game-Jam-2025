@@ -24,6 +24,7 @@ public class LightReflector : MonoBehaviour
     [SerializeField] protected Color level4Color;
     [SerializeField] protected Color level5Color;
     [SerializeField] protected Color level6Color;
+    [SerializeField] protected Color level7Color;
 
     [Header("Components")]
     [SerializeField] protected RotateableObject rotatable;
@@ -188,6 +189,8 @@ public class LightReflector : MonoBehaviour
             3 => level3Color,
             4 => level4Color,
             5 => level5Color,
+            6 => level6Color,
+            7 => level7Color,
             _ => throw new System.NotImplementedException(),
         };
 

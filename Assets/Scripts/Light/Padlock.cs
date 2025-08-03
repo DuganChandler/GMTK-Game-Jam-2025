@@ -27,6 +27,7 @@ public class Padlock : LightReciever
             4 => redMat,
             5 => purpleMat,
             6 => blueMat,
+            7 => greenMat,
             _ => throw new System.NotImplementedException(),
         };
     }
