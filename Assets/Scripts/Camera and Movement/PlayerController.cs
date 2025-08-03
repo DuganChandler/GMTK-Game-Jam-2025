@@ -183,7 +183,9 @@ public class PlayerController : MonoBehaviour {
             DialogInfo[] dialogInfos = DialogManager.Instance.GetRandomDialogInfos(
                                             DialogManager.Instance.Dialog.idleSequences
                                         );
-            StartCoroutine(DialogManager.Instance.ShowdialogSequence(dialogInfos));
+            if (dialogInfos != null || dialogInfos.Length > 0) {
+                StartCoroutine(DialogManager.Instance.ShowdialogSequence(dialogInfos));
+            }
         }
     }
 }

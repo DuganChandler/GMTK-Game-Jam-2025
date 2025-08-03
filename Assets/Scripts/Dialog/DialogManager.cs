@@ -116,7 +116,7 @@ public class DialogManager : MonoBehaviour {
     }
 
     public DialogInfo[] GetRandomDialogInfos(DialogSequnce[] dialogSequnces) {
-        if (dialogSequnces.Length <= 0) return null;
+        if (dialogSequnces.Length <= 0) return new DialogInfo[0];
         int randomIndex = Random.Range(0, dialogSequnces.Length);
         return dialogSequnces[randomIndex].DialogInfos;
     } 

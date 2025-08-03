@@ -15,7 +15,7 @@ public class PushableObject : MonoBehaviour, IInteractable<PlayerController> {
     void Awake() {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
 
         isoRotation = Quaternion.Euler(0f, isoYAngle, 0f);
