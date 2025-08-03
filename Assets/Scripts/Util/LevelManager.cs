@@ -35,6 +35,15 @@ public class LevelManager : MonoBehaviour {
 
     void Start() {
         if (startWithFade) circleWIpeTransition.OpenBlackScreen();
+
+        DialogManager.Instance.HaltDialog();
+
+        DialogSequnce[] dialogSequnces = DialogManager.Instance.Dialog.startingLevelSequences;
+        if (dialogSequnces.Length - 1 >= levelNumber && levelNumber != 1) {
+            int randomIndex = UnityEngine.Random.Range(1, 6);
+            DialogInfo[] dialogInfos = dialogSequnces[randomIndex].DialogInfos;
+            StartCoroutine(DialogManager.Instance.ShowdialogSequence(dialogInfos));
+        }
     }
 
     private void SetCameraSettings() {
