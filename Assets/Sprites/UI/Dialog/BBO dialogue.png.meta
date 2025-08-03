@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 15eaa005636d275429983320931c8265
+guid: 3d5c35406103f214b94b2b89864303b9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Maguy_Pushing__0
+      name: BBO dialogue_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 51
-        width: 512
-        height: 479
+        x: 602
+        y: 822
+        width: 1796
+        height: 3154
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ecb4f47701d2ee499e7f31900cf1a9c
-      internalID: -731461697
+      spriteID: 4fdec350982336a4dba5a5d2fb34fc43
+      internalID: 1241926939
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4b5a0d65de4502347b4924bb518b7c27
+    spriteID: bc90e26a59064724fbc46978f6374caf
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Maguy_Pushing__0: -731461697
+      BBO dialogue_0: 1241926939
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
