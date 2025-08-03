@@ -143,19 +143,21 @@ public class SplitLightReflector : LightReflector
 
     protected override void DeactivateCurrentlyHitReflector()
     {
-        if (currentlyHitObject != null)
+        Transform temp = currentlyHitObject;
+        currentlyHitObject = null;
+        if (temp != null)
         {
-            if (currentlyHitObject.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
-            else if (currentlyHitObject.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
-            currentlyHitObject = null;
+            if (temp.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflector)) currentlyHitReflector.Deactivate(lightLevel);
+            else if (temp.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifier)) currentlyHitAmplifier.Deactivate(lightLevel);
         }
-        
-        if (currentlyHitObjectTwo != null)
+
+        temp = currentlyHitObjectTwo;
+        currentlyHitObjectTwo = null;
+        if (temp != null)
         {
-            if (currentlyHitObjectTwo.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflectorTwo)) currentlyHitReflectorTwo.Deactivate(lightLevel);
-            else if (currentlyHitObjectTwo.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifierTwo)) currentlyHitAmplifierTwo.Deactivate(lightLevel);
-            currentlyHitObjectTwo = null;
+            if (temp.transform.TryGetComponent<LightReflector>(out LightReflector currentlyHitReflectorTwo)) currentlyHitReflectorTwo.Deactivate(lightLevel);
+            else if (temp.transform.TryGetComponent<LightAmplifier>(out LightAmplifier currentlyHitAmplifierTwo)) currentlyHitAmplifierTwo.Deactivate(lightLevel);
         }
-        
+
     }
 }
