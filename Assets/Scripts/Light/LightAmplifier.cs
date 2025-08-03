@@ -131,7 +131,10 @@ public class LightAmplifier : MonoBehaviour
             lightBeamEndPos = lightSpawnPoint.InverseTransformPoint(castHit.point);
             lightBeamEndPos.y = 0;
         }
-        else lightBeamEndPos = lightSpawnPoint.TransformDirection(lightSpawnPoint.InverseTransformDirection(directionOfSourceLight)) * lightLength;
+        else lightBeamEndPos = lightSpawnPoint.InverseTransformDirection(directionOfSourceLight) * lightLength;
+
+        print(transform.InverseTransformDirection(directionOfSourceLight));
+        print(lightSpawnPoint.InverseTransformDirection(directionOfSourceLight));
 
 
         // Set points on line
@@ -146,7 +149,7 @@ public class LightAmplifier : MonoBehaviour
             return;
         }
 
-        if (castHit.collider.transform == currentlyHitObject) return;
+        if (castHit.collider.transform == currentlyHitObject || castHit.collider.transform == transform) return;
 
 
         DeactivateCurrentlyHitReflector();

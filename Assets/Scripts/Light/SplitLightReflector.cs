@@ -84,7 +84,7 @@ public class SplitLightReflector : LightReflector
             return;
         }
 
-        if (castHit.collider.transform == currentlyHitObject) return;
+        if (castHit.collider.transform == currentlyHitObject || castHit.collider.transform == transform) return;
 
 
         DeactivateCurrentlyHitReflector();
@@ -112,7 +112,7 @@ public class SplitLightReflector : LightReflector
             return;
         }
 
-        if (castHitTwo.collider.transform == currentlyHitObjectTwo) return;
+        if (castHitTwo.collider.transform == currentlyHitObjectTwo || castHit.collider.transform == transform) return;
 
 
         DeactivateCurrentlyHitReflector();

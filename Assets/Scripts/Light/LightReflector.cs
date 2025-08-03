@@ -128,7 +128,7 @@ public class LightReflector : MonoBehaviour
             return;
         }
 
-        if (castHit.collider.transform == currentlyHitObject) return;
+        if (castHit.collider.transform == currentlyHitObject || castHit.collider.transform == transform) return;
 
 
         DeactivateCurrentlyHitReflector();
