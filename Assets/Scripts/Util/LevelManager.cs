@@ -67,6 +67,8 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void TriggerLevelSolved() {
+        SoundManager.Instance.PlaySound("OpenDoor");
+
         DialogManager.Instance.HaltDialog();
 
         DialogSequnce[] dialogSequnces = DialogManager.Instance.Dialog.endingLevelSequnces;

@@ -267,6 +267,10 @@ MonoBehaviour:
     sfxClip: {fileID: 8300000, guid: 4b3e1e85a695f0a47af741bca55dafff, type: 3}
   - sfxName: Deactivate_Tones
     sfxClip: {fileID: 8300000, guid: d7843a328813adf4ba376de929c826f2, type: 3}
+  - sfxName: OpenDoor
+    sfxClip: {fileID: 8300000, guid: 908928ccfb726154e897c13857f541c0, type: 3}
+  - sfxName: PuzzleSolved
+    sfxClip: {fileID: 8300000, guid: d4d476188e0cacd4fa012f24ceb5c357, type: 3}
 --- !u!4 &10630926
 Transform:
   m_ObjectHideFlags: 0
