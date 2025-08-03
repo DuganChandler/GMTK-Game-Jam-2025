@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class PauseMenuManager : MonoBehaviour
         else GameManager.Instance.GameState = GameState.Pause;
 
         timer = 0.1f;
+    }
+
+    public void OnMainMenu() {
+        DialogManager.Instance.HaltDialog();
+        SceneManager.LoadScene("Level1Scene");
     }
 
     private void Update()
