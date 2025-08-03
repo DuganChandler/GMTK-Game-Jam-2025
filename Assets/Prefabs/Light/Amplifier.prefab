@@ -126,6 +126,7 @@ MonoBehaviour:
   remainCastingAfterActive: 0
   castOnStart: 0
   isOmnidirectional: 0
+  initialLightLevel: 1
   lightLayer:
     serializedVersion: 2
     m_Bits: 567
@@ -134,6 +135,7 @@ MonoBehaviour:
   linePrefab: {fileID: 6604855539323102046, guid: 60c7bcdb40afca14495ee477efcc58e6, type: 3}
   lightSpawnPoint: {fileID: 1069989520248285248}
   numberOfLightUpMaterial: -1
+  numberOfLightUpMaterialTwo: -1
   lightGlowAmount: 4
   normalColor: {r: 0.77254903, g: 0.92941177, b: 1, a: 1}
   level1Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,6 +143,7 @@ MonoBehaviour:
   level3Color: {r: 1, g: 0.5, b: 0, a: 1}
   level4Color: {r: 1, g: 0, b: 0, a: 1}
   level5Color: {r: 0.5, g: 0, b: 1, a: 1}
+  level6Color: {r: 0, g: 0, b: 1, a: 1}
 --- !u!1 &7782829175752518360
 GameObject:
   m_ObjectHideFlags: 0

@@ -136,6 +136,8 @@ MonoBehaviour:
   level3Color: {r: 1, g: 0.5, b: 0, a: 1}
   level4Color: {r: 1, g: 0, b: 0, a: 1}
   level5Color: {r: 0.5, g: 0, b: 1, a: 1}
+  level6Color: {r: 0, g: 0, b: 1, a: 1}
+  rotatable: {fileID: 0}
   lightSpawnPoint: {fileID: 4429038311712368757}
 --- !u!135 &6152510531557854763
 SphereCollider:

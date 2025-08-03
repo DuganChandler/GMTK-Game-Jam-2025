@@ -23,6 +23,7 @@ public class LightReflector : MonoBehaviour
     [SerializeField] protected Color level3Color;
     [SerializeField] protected Color level4Color;
     [SerializeField] protected Color level5Color;
+    [SerializeField] protected Color level6Color;
 
     [Header("Components")]
     [SerializeField] protected RotateableObject rotatable;

@@ -403,7 +403,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6185668592333747247, guid: f0c2e0ecc05ef5941963b89343f72586, type: 3}
       propertyPath: lightLevelRequiredToActivate
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -6185668592333747247, guid: f0c2e0ecc05ef5941963b89343f72586, type: 3}
       propertyPath: onActivate.m_PersistentCalls.m_Calls.Array.size
@@ -1809,7 +1809,7 @@ PrefabInstance:
       objectReference: {fileID: 1660310218}
     - target: {fileID: 861513629860748254, guid: bdf6f9767189c0f41aa31abe91f1f59a, type: 3}
       propertyPath: lightLevelRequiredToActivate
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 861513629860748254, guid: bdf6f9767189c0f41aa31abe91f1f59a, type: 3}
       propertyPath: onActivation.m_PersistentCalls.m_Calls.Array.size
@@ -2990,6 +2990,10 @@ PrefabInstance:
     - target: {fileID: 848026173266079749, guid: dc84ed2b6b878cd4e9b1b86109a2b3e8, type: 3}
       propertyPath: m_Name
       value: Beacon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668144725312329441, guid: dc84ed2b6b878cd4e9b1b86109a2b3e8, type: 3}
+      propertyPath: initialLightLevel
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
