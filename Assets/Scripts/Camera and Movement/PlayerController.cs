@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour {
 
             var collider = Physics.OverlapSphere(InteractPos, 0.3f, interactableLayer);
             if (collider.Length > 0) {
+                // dialog here -> dialog
                 if (collider[0].TryGetComponent<IInteractable<PlayerController>>(out var interactable)) {
                     IsInteracting = true;
                     StartCoroutine(interactable.Interact(transform, this));

@@ -32,6 +32,13 @@ public class MainMenuManager : MonoBehaviour {
         cam
           .DOOrthoSize(cameraManager.MaxOrthoSize, cameraManager.ZoomDuration)
           .SetEase(Ease.OutBounce)
-          .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
+          .OnComplete(() => {
+            GameManager.Instance.GameState = GameState.Playing;
+            StartCoroutine(
+                DialogManager.Instance.ShowdialogSequence(
+                    DialogManager.Instance.Dialog.startingLevelSequences[0].DialogInfos
+                )
+            );
+        });
     }
 }

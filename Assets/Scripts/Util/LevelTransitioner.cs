@@ -28,6 +28,7 @@ public class LevelTransitioner : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
+            DialogManager.Instance.HaltDialog();
             _circleWIpeTransition.CloseBlackScreen();
         } 
     }
