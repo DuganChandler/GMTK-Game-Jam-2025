@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   remainCastingAfterActive: 0
   castOnStart: 0
+  initialLightLevel: 1
   lightLayer:
     serializedVersion: 2
     m_Bits: 567
@@ -247,6 +248,8 @@ MonoBehaviour:
   level3Color: {r: 1, g: 0.5, b: 0, a: 1}
   level4Color: {r: 1, g: 0, b: 0, a: 1}
   level5Color: {r: 0.5, g: 0, b: 1, a: 1}
+  level6Color: {r: 0, g: 0, b: 1, a: 1}
+  rotatable: {fileID: 0}
   lightSpawnPoint: {fileID: 3110197624564498476}
 --- !u!1 &8671444388479504071
 GameObject:
