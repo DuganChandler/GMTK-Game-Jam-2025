@@ -1,9 +1,13 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainMenuManager : MonoBehaviour {
     [Header("UI Elements")] 
     [SerializeField] private GameObject mainMenuElements;
+
+    [SerializeField] private GameObject startButton;
 
     private CameraManager cameraManager;
     
@@ -15,6 +19,7 @@ public class MainMenuManager : MonoBehaviour {
 
     void Start() {
         SoundManager.Instance.PlayMusicNoFade("MainTheme"); 
+        EventSystem.current.SetSelectedGameObject(startButton);
     }
 
     public void OnStart() {
