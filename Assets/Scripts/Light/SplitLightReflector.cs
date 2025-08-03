@@ -18,6 +18,22 @@ public class SplitLightReflector : LightReflector
         lightLevel = CalculateLightLevel();
     }
 
+    public override bool Activate(int levelGoingIn)
+    {
+        if (castOnStart || remainCastingAfterActive) return false;
+
+        if (lightBeam != null) Destroy(lightBeam.gameObject);
+        DeactivateCurrentlyHitReflector();
+        DeactivateCurrentlyHitReflectorTwo();
+
+        Active = true;
+
+        lightsGoingIntoThis.Add(levelGoingIn);
+        lightLevel = CalculateLightLevel();
+
+        return true;
+    }
+
     public override void Deactivate(int levelGoingOut)
     {
         DeactivateCurrentlyHitReflector();
@@ -31,6 +47,21 @@ public class SplitLightReflector : LightReflector
 
     protected override void CastLight()
     {
+        if (rotatable != null && rotatable.Busy)
+        {
+            if (lightBeam != null)
+            {
+                DeactivateCurrentlyHitReflector();
+                Destroy(lightBeam.gameObject);
+            }
+            if (lightBeamTwo != null)
+            {
+                DeactivateCurrentlyHitReflectorTwo();
+                Destroy(lightBeamTwo.gameObject);
+            }
+            return;
+        }
+
         bool hitSomething = Physics.SphereCast(lightSpawnPoint.position, lightRadius, lightSpawnPoint.forward, out RaycastHit castHit, lightLength, lightLayer);
         bool hitSomethingTwo = Physics.SphereCast(lightSpawnPoint.position, lightRadius, lightSpawnPointTwo.forward, out RaycastHit castHitTwo, lightLength, lightLayer);
 

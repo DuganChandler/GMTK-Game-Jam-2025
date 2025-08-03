@@ -8,6 +8,8 @@ public class RotateableObject : MonoBehaviour, IInteractable<float> {
     private Rigidbody rb;
     private bool busy = false;
 
+    public bool Busy => busy;
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
     }

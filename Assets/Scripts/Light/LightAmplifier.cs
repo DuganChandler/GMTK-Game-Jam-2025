@@ -7,6 +7,7 @@ public class LightAmplifier : MonoBehaviour
     [SerializeField] private bool remainCastingAfterActive = false;
     [SerializeField] private bool castOnStart = false;
     [SerializeField] private bool isOmnidirectional = false;
+    [SerializeField] private int initialLightLevel = 1;
     [SerializeField] private LayerMask lightLayer;
     [SerializeField] private float lightRadius = 0.25f;
     [SerializeField] private float lightLength = 15f;
@@ -57,7 +58,7 @@ public class LightAmplifier : MonoBehaviour
             lightUpMaterialTwo = rend.materials[numberOfLightUpMaterialTwo];
         }
 
-        if (castOnStart) Activate(1, transform.forward);
+        if (castOnStart) Activate(initialLightLevel, transform.forward);
     }
 
     public void ActivateStart(int levelGoingIn, Vector3 direction)
