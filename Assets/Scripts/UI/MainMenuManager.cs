@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class MainMenuManager : MonoBehaviour {
     [Header("UI Elements")] 
     [SerializeField] private GameObject mainMenuElements;
+    [SerializeField] private GameObject creditsMenu;
 
     [SerializeField] private GameObject startButton;
 
@@ -29,6 +30,11 @@ public class MainMenuManager : MonoBehaviour {
 
     public void OnQuit() {
         Application.Quit();
+    }
+
+    public void OnCredits()
+    {
+        creditsMenu.SetActive(!creditsMenu.activeSelf);
     }
 
     void StartGame() {
