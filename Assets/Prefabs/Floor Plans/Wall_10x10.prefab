@@ -1,0 +1,663 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1044766334849895723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 27851388106581217}
+  m_Layer: 0
+  m_Name: Wall_10x10
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &27851388106581217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044766334849895723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5738474934829883819}
+  - {fileID: 6386335249302463956}
+  - {fileID: 5995460483941971701}
+  - {fileID: 1049887993643178200}
+  - {fileID: 849453208663379689}
+  - {fileID: 8683232594219760851}
+  - {fileID: 528518585226757269}
+  - {fileID: 4268466411668619788}
+  - {fileID: 835334925477733553}
+  - {fileID: 2977694068370643252}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &579917124365305773
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &2977694068370643252 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 579917124365305773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1901082962640837781
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &4268466411668619788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 1901082962640837781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2741302037081938444
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (9)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &528518585226757269 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 2741302037081938444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3069060512542265456
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &849453208663379689 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 3069060512542265456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3083021565565286952
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &835334925477733553 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 3083021565565286952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3445061191099762241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &1049887993643178200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 3445061191099762241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6476081148744114762
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &8683232594219760851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 6476081148744114762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7997702425395101490
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &5738474934829883819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 7997702425395101490}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8244548288501540972
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &5995460483941971701 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 8244548288501540972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8790588203171740493
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 27851388106581217}
+    m_Modifications:
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032457309700785187, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+      propertyPath: m_Name
+      value: WallDoorless (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+--- !u!4 &6386335249302463956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404538986315964057, guid: 1aeaf10ad52803e48b37e5b273017a68, type: 3}
+  m_PrefabInstance: {fileID: 8790588203171740493}
+  m_PrefabAsset: {fileID: 0}
