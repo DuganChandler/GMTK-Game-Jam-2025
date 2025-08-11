@@ -7,16 +7,18 @@ public readonly struct BeamData
     readonly Vector3 origin;
     readonly Vector3 direction;
     readonly ILightReciever sourceReciever;
+    readonly ILightReflector sourceReflector;
     readonly ILightReciever targetReciever;
     readonly Transform targetRecieverTransform;
 
-    public BeamData(Color color, int power, Vector3 origin, Vector3 direction, ILightReciever source, ILightReciever target, Transform targetTransform)
+    public BeamData(Color color, int power, Vector3 origin, Vector3 direction, ILightReciever source, ILightReflector sourceReflector, ILightReciever target, Transform targetTransform)
     {
         this.color = color;
         this.power = power;
         this.origin = origin;
         this.direction = direction;
         this.sourceReciever = source;
+        this.sourceReflector = sourceReflector;
         this.targetReciever = target;
         this.targetRecieverTransform = targetTransform;
     }
@@ -26,6 +28,7 @@ public readonly struct BeamData
     public Vector3 Origin => origin;
     public Vector3 Direction => direction;
     public ILightReciever SourceReciever => sourceReciever;
+    public ILightReflector SourceReflector => sourceReflector;
     public ILightReciever TargetReciever => targetReciever;
     public Transform TargetRecieverTransform => targetRecieverTransform;
 }

@@ -25,6 +25,7 @@ public class SplitBallBro : MonoBehaviour, ILightReciever, ILightReflector
     public bool IsLit { get; private set; }
     public bool IsSource => isSource;
     public List<BeamData> CurrentlyRecievingBeams => currentlyRecievingBeams;
+    public List<BeamData> CurrentlyReflectedBeams => currentlyReflectedBeams;
 
     public List<BeamData> currentlyRecievingBeams;
     private int reflectedBeamLevel;
@@ -41,13 +42,24 @@ public class SplitBallBro : MonoBehaviour, ILightReciever, ILightReflector
         if (isSource)
         {
             IsLit = true;
-            currentlyReflectedBeams.Add(new(level1Color, 1, lineSpawnPoint.position, lineSpawnPoint.forward, this, null, null));
+            currentlyReflectedBeams.Add(new(level1Color, 1, lineSpawnPoint.position, lineSpawnPoint.forward, this, this, null, null));
         }
     }
 
     private void Update()
     {
-        if (IsLit) ReflectBeams();
+        if (!IsTrulyBeingHitBySomething())
+        {
+            for (int i = 0; i < currentlyRecievingBeams.Count; i++)
+            {
+                OnBeamStopRecieved(currentlyRecievingBeams[0]);
+            }
+        }
+
+        if (IsLit)
+        {
+            ReflectBeams();
+        }
     }
     #endregion
 
@@ -72,8 +84,9 @@ public class SplitBallBro : MonoBehaviour, ILightReciever, ILightReflector
         if (isSource) reflectedBeamLevel = 1;
         else reflectedBeamLevel = GetLightPower();
 
-        BeamData beamToShootLeft = new(GetLightColorFromPower(), reflectedBeamLevel, lineSpawnPoint.position, leftDirection, this, null, null);
-        BeamData beamToShootRight = new(GetLightColorFromPower(), reflectedBeamLevel, lineSpawnPoint.position, rightDirection, this, null, null);
+        BeamData beamToShootLeft = new(GetLightColorFromPower(), reflectedBeamLevel, lineSpawnPoint.position, leftDirection, this, this, null, null);
+        BeamData beamToShootRight = new(GetLightColorFromPower(), reflectedBeamLevel, lineSpawnPoint.position, rightDirection, this, this, null, null);
+
         currentlyReflectedBeams.Add(beamToShootLeft);
         currentlyReflectedBeams.Add(beamToShootRight);
 
@@ -150,21 +163,21 @@ public class SplitBallBro : MonoBehaviour, ILightReciever, ILightReflector
                 if (castHit.collider != null && currentlyReflectedBeams[i].TargetRecieverTransform != castHit.collider.transform) // If the receiver hit last frame is a different object from the one hit this frame 
                 {
                     currentlyReflectedBeams[i].TargetReciever.OnBeamStopRecieved(currentlyReflectedBeams[i]);
-                    currentlyReflectedBeams[i] = new(currentlyReflectedBeams[i].Color, currentlyReflectedBeams[i].Power, currentlyReflectedBeams[i].Origin, currentlyReflectedBeams[i].Direction, this, null, null);
+                    currentlyReflectedBeams[i] = new(currentlyReflectedBeams[i].Color, currentlyReflectedBeams[i].Power, currentlyReflectedBeams[i].Origin, currentlyReflectedBeams[i].Direction, this, this, null, null);
                 }
 
                 // If a reciever object moves out of the way of the beam
                 if (castHit.collider == null && currentlyReflectedBeams[i].TargetReciever != null)
                 {
                     currentlyReflectedBeams[i].TargetReciever.OnBeamStopRecieved(currentlyReflectedBeams[i]);
-                    currentlyReflectedBeams[i] = new(currentlyReflectedBeams[i].Color, currentlyReflectedBeams[i].Power, currentlyReflectedBeams[i].Origin, currentlyReflectedBeams[i].Direction, this, null, null);
+                    currentlyReflectedBeams[i] = new(currentlyReflectedBeams[i].Color, currentlyReflectedBeams[i].Power, currentlyReflectedBeams[i].Origin, currentlyReflectedBeams[i].Direction, this, this, null, null);
                 }
             }
 
             // Activate currently hit object if applicable
             if (castHit.collider != null && castHit.collider.TryGetComponent(out ILightReciever hitReciever))
             {
-                currentlyReflectedBeams[i] = new(currentlyReflectedBeams[i].Color, currentlyReflectedBeams[i].Power, currentlyReflectedBeams[i].Origin, currentlyReflectedBeams[i].Direction, this, hitReciever, castHit.collider.transform);
+                currentlyReflectedBeams[i] = new(currentlyReflectedBeams[i].Color, currentlyReflectedBeams[i].Power, currentlyReflectedBeams[i].Origin, currentlyReflectedBeams[i].Direction, this, this, hitReciever, castHit.collider.transform);
                 hitReciever?.OnBeamRecieved(currentlyReflectedBeams[i]);
             }
         }
@@ -248,6 +261,24 @@ public class SplitBallBro : MonoBehaviour, ILightReciever, ILightReflector
         foreach (BeamData data in root.CurrentlyRecievingBeams)
         {
             if (CheckPathForSource(data.SourceReciever, visitedRecievers)) return true;
+        }
+
+        return false;
+    }
+
+    private bool IsTrulyBeingHitBySomething()
+    {
+        if (isSource) return true;
+
+        foreach (var beamGoingIntoThis in currentlyRecievingBeams)
+        {
+            foreach (var beamBeingShotOutOfSource in beamGoingIntoThis.SourceReflector.CurrentlyReflectedBeams)
+            {
+                if (beamBeingShotOutOfSource.TargetRecieverTransform == transform)
+                {
+                    return true;
+                }
+            }
         }
 
         return false;
