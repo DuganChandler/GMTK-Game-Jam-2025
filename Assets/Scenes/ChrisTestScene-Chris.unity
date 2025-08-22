@@ -1954,6 +1954,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8147575470031063345, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
+      propertyPath: lightBeamPrefab
+      value: 
+      objectReference: {fileID: 3936992231231322699, guid: 100e5ee5daf029f4b9503f86f9dba6d3, type: 3}
+    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
+      propertyPath: isAStartingSource
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1120800703761614531, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
       propertyPath: m_Name
       value: BallBro - Red (1)
@@ -2001,18 +2013,6 @@ PrefabInstance:
     - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8147575470031063345, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: lightBeamPrefab
-      value: 
-      objectReference: {fileID: 3936992231231322699, guid: 100e5ee5daf029f4b9503f86f9dba6d3, type: 3}
-    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: isAStartingSource
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
@@ -2492,80 +2492,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9138995b94621454a8ad28aed8079c42, type: 3}
---- !u!1001 &1400458222
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1120800703761614531, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_Name
-      value: BallBro - Red (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1120800703761614531, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.923879
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.38268483
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8147575470031063345, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: lightBeamPrefab
-      value: 
-      objectReference: {fileID: 3936992231231322699, guid: 100e5ee5daf029f4b9503f86f9dba6d3, type: 3}
-    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: isAStartingSource
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
 --- !u!1001 &1524817981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3359,6 +3285,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8147575470031063345, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
+      propertyPath: lightBeamPrefab
+      value: 
+      objectReference: {fileID: 3936992231231322699, guid: 100e5ee5daf029f4b9503f86f9dba6d3, type: 3}
+    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
+      propertyPath: isAStartingSource
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1120800703761614531, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
       propertyPath: m_Name
       value: BallBro - Red
@@ -3410,18 +3348,6 @@ PrefabInstance:
     - target: {fileID: 9129849664091679900, guid: 4f25291fbc6e29c49b6067af31aace35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8147575470031063345, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: lightBeamPrefab
-      value: 
-      objectReference: {fileID: 3936992231231322699, guid: 100e5ee5daf029f4b9503f86f9dba6d3, type: 3}
-    - target: {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
-      propertyPath: isAStartingSource
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8697917979466818099, guid: 3457c50dbb9f7d542be9d6019ee92454, type: 3}
@@ -3692,5 +3618,4 @@ SceneRoots:
   - {fileID: 6499457582841093328}
   - {fileID: 2033980417}
   - {fileID: 1177320345}
-  - {fileID: 1400458222}
   - {fileID: 1316560099}
