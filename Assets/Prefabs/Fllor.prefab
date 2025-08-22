@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1fca02c5e31704cb498a3c537e77b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1fca02c5e31704cb498a3c537e77b7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1fca02c5e31704cb498a3c537e77b7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd1fca02c5e31704cb498a3c537e77b7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,10 +62,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dd1fca02c5e31704cb498a3c537e77b7, type: 3}
       propertyPath: m_Name
-      value: Floor (1)
+      value: Fllor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd1fca02c5e31704cb498a3c537e77b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2530101074635024157}
   m_SourcePrefab: {fileID: 100100000, guid: dd1fca02c5e31704cb498a3c537e77b7, type: 3}
+--- !u!1 &7171079520957841916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dd1fca02c5e31704cb498a3c537e77b7, type: 3}
+  m_PrefabInstance: {fileID: 8017993955264724141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2530101074635024157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171079520957841916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7426f00357cff44ab1206b196ee1906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1
+  size: {x: 1, y: 1, z: 1}
