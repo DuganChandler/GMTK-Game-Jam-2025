@@ -8,6 +8,8 @@ public class CameraManager : MonoBehaviour {
     private bool _isMoving, _isRotating, _isBusy;
     private float _xRotation, rotationDirection;
 
+    public int YawIndex { get; private set; } = 0;
+
     private float _moveSpeed = 10.0f;
     public float MoveSpeed {
         set {
@@ -128,11 +130,26 @@ public class CameraManager : MonoBehaviour {
         float currentY = Mathf.Ceil(transform.rotation.eulerAngles.y);
 
         float endVal = currentY switch {
-            >= 0 and <= 90 => 45.0f,
-            >= 91 and <= 180 => 135.0f,
-            >= 181 and <= 270 => 225.0f,
-            _ => 315.0f
+            >= 0 and <= 90 => 25.0f,
+            >= 91 and <= 180 => 115.0f,
+            >= 181 and <= 270 => 205.0f,
+            _ => 295.0f
         };
+
+        switch (endVal) {
+            case 25.0f:
+                YawIndex = 0;
+                break;
+            case 115.0f:
+                YawIndex = 1;
+                break;
+            case 205.0f:
+                YawIndex = 2;
+                break;
+            case 295.0f:
+                YawIndex = 3;
+                break;
+        }
 
         return new Vector3(_xRotation, endVal, 0.0f);
     }
