@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5792259905014857851, guid: aa7c70862e46bab45a01c48b052660b9, type: 3}
+      propertyPath: _pushable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5792259905014857851, guid: aa7c70862e46bab45a01c48b052660b9, type: 3}
+      propertyPath: _rotatable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7291385966777653431, guid: aa7c70862e46bab45a01c48b052660b9, type: 3}
       propertyPath: m_Name
       value: BallBro - Red
