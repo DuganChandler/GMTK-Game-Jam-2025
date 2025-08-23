@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1445210518642209512}
   - component: {fileID: 2422973611435985994}
   - component: {fileID: 7384455537131708922}
-  - component: {fileID: 2227930474209957565}
-  - component: {fileID: 7178276287809460472}
+  - component: {fileID: 5792259905014857851}
   m_Layer: 7
   m_Name: BallBro - Base
   m_TagString: BallBroRed
@@ -84,7 +83,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.5, z: 1}
   m_Center: {x: 0, y: 1.25, z: 0}
---- !u!114 &2227930474209957565
+--- !u!114 &5792259905014857851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,24 +92,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7291385966777653431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc9c1fe3024d0840a7421f00e676278, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c304bf9c4feede47876e5a872083860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &7178276287809460472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7291385966777653431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c61bda71c99eb8e45b71a7d9d48a6bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  snapInEditor: 1
+  _pushable: 1
+  _rotatable: 1
 --- !u!1001 &3808496449379013844
 PrefabInstance:
   m_ObjectHideFlags: 0
