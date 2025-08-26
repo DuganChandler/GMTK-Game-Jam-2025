@@ -4,6 +4,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour {
     [Header("Level Specific Settings")]
     [SerializeField] int levelNumber;
+    [SerializeField] Room[] rooms;
 
     [Header("Fade Settings")]
     [SerializeField] private CircleWIpeTransition circleWIpeTransition;
@@ -23,9 +24,14 @@ public class LevelManager : MonoBehaviour {
     [SerializeField] private LevelTransitioner levelTransitioner;
     [SerializeField] private string nextLevelName;
 
+    public static event Action OnRoomSolved;
     public static event Action OnLevelSolved;
 
+    private int currentRoomIndex = 0;
+    private Room CurrentRoom => rooms[currentRoomIndex];
+
     void Awake() {
+        if (rooms.Length == 0) Debug.LogError("No rooms set in level manager");
         if (cameraManager) SetCameraSettings();
         if (levelTransitioner) SetTransitionSettings();
         if (circleWIpeTransition) SetFadeSettings();
@@ -49,7 +55,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     private void SetCameraSettings() {
-        cameraManager.MaxOrthoSize = maxOrthoSize;
+        cameraManager.MaxOrthoSize = CurrentRoom.camOrthoSize;
         cameraManager.ZoomDuration = zoomDuration;
         cameraManager.MoveSpeed = moveSpeed;
         cameraManager.RotationSpeed = rotationSpeed;
@@ -66,7 +72,7 @@ public class LevelManager : MonoBehaviour {
         circleWIpeTransition.FadeDuration = fadeDuration;
     }
 
-    public void TriggerLevelSolved() {
+    public void TrigggerRoomSolved() {
         SoundManager.Instance.PlaySound("OpenDoor");
 
         DialogManager.Instance.HaltDialog();
@@ -77,6 +83,39 @@ public class LevelManager : MonoBehaviour {
             StartCoroutine(DialogManager.Instance.ShowdialogSequence(dialogInfos));
         }
 
-        OnLevelSolved?.Invoke();
+        if (currentRoomIndex >= rooms.Length - 1) {
+            OnLevelSolved?.Invoke();
+        } else {
+            OnRoomSolved?.Invoke();
+        }
+    }
+
+    private void GoToRoom(int roomIndex)
+    {
+        currentRoomIndex = roomIndex;
+        cameraManager.MaxOrthoSize = CurrentRoom.camOrthoSize;
+        cameraManager.ShiftCamera(CurrentRoom.room.position);
+    }
+
+    [ContextMenu("First Room")]
+    private void FirstRoom()
+    {
+        GoToRoom(0);
+    }
+
+    [ContextMenu("Second Room")]
+
+    private void SecondRoom()
+    {
+        GoToRoom(1);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            currentRoomIndex = (currentRoomIndex + 1) % rooms.Length;
+            GoToRoom(currentRoomIndex);
+        }
     }
 }

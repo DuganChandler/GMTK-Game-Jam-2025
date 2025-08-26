@@ -165,4 +165,13 @@ public class CameraManager : MonoBehaviour {
           .Join(cam.transform.DOMove(new Vector3(0, 0, 0), _zoomDuration).SetEase(Ease.OutQuad))
           .OnComplete(() => GameManager.Instance.GameState = GameState.Playing);
     }
+
+    public void ShiftCamera(Vector3 newPos) {
+        Camera cam = Camera.main;
+        Sequence seq = DOTween.Sequence();
+
+        seq
+            .Append(cam.transform.DOMove(new Vector3(newPos.x, 0, newPos.z), _zoomDuration).SetEase(Ease.InOutQuart))
+            .Join(cam.DOOrthoSize(_maxOrthoSize, _zoomDuration).SetEase(Ease.OutQuad));
+    }
 }

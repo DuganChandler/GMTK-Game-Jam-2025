@@ -8,7 +8,7 @@ public class LightReciever : MonoBehaviour {
     public virtual bool Activate(int lightLevel) {
         if (lightLevel < lightLevelRequiredToActivate) return false;
 
-        levelManager.TriggerLevelSolved();
+        levelManager.TrigggerRoomSolved();
 
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;

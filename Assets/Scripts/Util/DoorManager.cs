@@ -5,11 +5,11 @@ public class DoorManager : MonoBehaviour {
     [SerializeField] private GameObject trigger;
 
     void OnEnable() {
-        LevelManager.OnLevelSolved += OpenDoor;
+        LevelManager.OnRoomSolved += OpenDoor;
     }
 
     void OnDisable() {
-        LevelManager.OnLevelSolved -= OpenDoor;
+        LevelManager.OnRoomSolved -= OpenDoor;
     }
 
     void OpenDoor() {
