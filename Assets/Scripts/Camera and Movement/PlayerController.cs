@@ -71,6 +71,14 @@ public class PlayerController : MonoBehaviour {
         _body = GetComponent<GridBody>();
     }
 
+    private void OnEnable() {
+        Door.OnPlayerEnterRoom += TryMove;
+    }
+
+    private void OnDisable() {
+        Door.OnPlayerEnterRoom -= TryMove;
+    }
+
     void Start() {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();

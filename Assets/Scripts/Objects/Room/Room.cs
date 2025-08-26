@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct Room
+public class Room : MonoBehaviour
 {
-    public Transform room;
     public float camOrthoSize;
 }
