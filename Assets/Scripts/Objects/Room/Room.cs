@@ -5,4 +5,5 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public float camOrthoSize;
+    public Transform center;
 }

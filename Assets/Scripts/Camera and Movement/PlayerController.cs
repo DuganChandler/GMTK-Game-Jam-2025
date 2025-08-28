@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour {
     private const string MOVEINPUTZ_PARAMETER = "MoveInputZ";
     private const string INTERACTING_PARAMETER = "IsInteracting";
 
+    public static Action<Room> OnPlayerEntersRoom;
+
     static readonly Vector3Int[] FORWARDS = {
         new(0,0, 1), 
         new(1,0,0), 
@@ -71,14 +74,6 @@ public class PlayerController : MonoBehaviour {
         _body = GetComponent<GridBody>();
     }
 
-    private void OnEnable() {
-        Door.OnPlayerEnterRoom += TryMove;
-    }
-
-    private void OnDisable() {
-        Door.OnPlayerEnterRoom -= TryMove;
-    }
-
     void Start() {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -93,6 +88,7 @@ public class PlayerController : MonoBehaviour {
     public void TryStepLeft() => TryMove(-RIGHTS[yawIndex]);
 
     public void OnMove(InputAction.CallbackContext context) {
+        if (GameManager.Instance.GameState != GameState.Playing) return;
         if (context.started) {
             moveInput = context.ReadValue<Vector2>();
 
@@ -202,11 +198,20 @@ public class PlayerController : MonoBehaviour {
             return;
         }
 
+        bool isTeleporting = false;
+        if (map.TryGetDoorLink(toBody, out var doorData) && !map.HasOccupant(doorData.playerEnterPosition))
+        {
+            toBody = doorData.playerEnterPosition;
+            OnPlayerEntersRoom?.Invoke(doorData.LinkedRoom);
+            isTeleporting = true;
+        }
+
         if (map.IsStaticBlocked(toBody) || map.HasOccupant(toBody)) return;
         if (!map.TryGetGround(support, out var supportFlags)) return;
-        if (!supportFlags.HasFlag(GroundFlags.Walkable)) return;
+        if (!supportFlags.HasFlag(GroundFlags.Walkable)) return; 
 
-        StartCoroutine(AnimateMove(fromBody, toBody, null));
+        if (isTeleporting) StartCoroutine(AnimateTeleport(fromBody, toBody, null));
+        else StartCoroutine(AnimateMove(fromBody, toBody, null));
     }
 
     bool CanPlaceObjAtBody( Vector3Int crateBody, out GroundFlags supportFlags, Vector3Int? ignoreOccupantCell = null) {
@@ -230,6 +235,23 @@ public class PlayerController : MonoBehaviour {
         return false;
     }
 
+    IEnumerator AnimateTeleport(Vector3Int fromBody, Vector3Int toBody, System.Action afterLanding)
+    {
+        _busy = true;
+        GridMap map = GridMap.I;
+
+        map.Vacate(fromBody);
+        map.Occupy(toBody, _body);
+
+        Vector3 b = map.BodyToWorldFeet(toBody);
+
+        _body.transform.position = b;
+
+        _body.SetGridPos(toBody);
+        _busy = false;
+        afterLanding?.Invoke();
+        yield break;
+    }
 
     IEnumerator AnimateMove(Vector3Int fromBody, Vector3Int toBody, System.Action afterLanding) {
         _busy = true;

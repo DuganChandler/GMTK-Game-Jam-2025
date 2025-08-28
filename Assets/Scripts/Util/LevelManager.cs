@@ -38,12 +38,12 @@ public class LevelManager : MonoBehaviour {
 
     private void OnEnable()
     {
-        Door.OnCurrentRoomChange += GoToRoom;
+        PlayerController.OnPlayerEntersRoom += GoToRoom;
     }
 
     private void OnDisable()
     {
-        Door.OnCurrentRoomChange -= GoToRoom;
+        PlayerController.OnPlayerEntersRoom -= GoToRoom;
     }
 
     void Start() {
@@ -96,6 +96,6 @@ public class LevelManager : MonoBehaviour {
     private void GoToRoom(Room room)
     {
         cameraManager.MaxOrthoSize = room.camOrthoSize;
-        cameraManager.ShiftCamera(room.transform.position);
+        cameraManager.ShiftCamera(room.center.position);
     }
 }

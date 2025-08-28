@@ -17,6 +17,7 @@ public class GridMap : MonoBehaviour {
 
     private readonly Dictionary<Vector3Int, GroundFlags> _ground = new();
     private readonly HashSet<Vector3Int> _staticBlockers = new();
+    private readonly Dictionary<Vector3Int, DoorData> _doorLinks = new();
     private readonly Dictionary<Vector3Int, GridBody> _occupants = new();
     private readonly Dictionary<Vector3Int, Vector3Int> _elevatorLinks = new();
 
@@ -35,9 +36,13 @@ public class GridMap : MonoBehaviour {
     public void RegisterStaticBlocker(Vector3Int cell) => _staticBlockers.Add(cell);
     public void UnregisterStaticBlocker(Vector3Int cell) => _staticBlockers.Remove(cell);
 
+    public void RegisterDoorLink(Vector3Int cell, DoorData doorData) => _doorLinks[cell] = doorData;
+    public void UnregisterDoorLink(Vector3Int cell) => _doorLinks.Remove(cell);
+
     // Grid Coord Queries 
     public bool TryGetGround(Vector3Int cell, out GroundFlags flags) => _ground.TryGetValue(cell, out flags);
     public bool IsStaticBlocked(Vector3Int cell) => _staticBlockers.Contains(cell);
+    public bool TryGetDoorLink(Vector3Int cell, out DoorData destination) => _doorLinks.TryGetValue(cell, out destination);
     public bool HasOccupant(Vector3Int cell) => _occupants.ContainsKey(cell);
     public GridBody GetOccupant(Vector3Int cell) => _occupants.TryGetValue(cell, out var b) ? b : null;
 
